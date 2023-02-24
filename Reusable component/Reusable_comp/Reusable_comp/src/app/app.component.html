@@ -1,0 +1,14 @@
+<app-table
+  [class]="classStyle"
+  [heading]="headingArray"
+  [data]="userList"
+  [tableSize]="userTableSize"
+  (fetch)="fetchuser()"
+></app-table>
+<app-table
+  [class]="vendorStyle"
+  [heading]="commentHead"
+  [data]="comments"
+  [tableSize]="commentTableSize"
+  (fetch)="fetchComment()"
+></app-table>
