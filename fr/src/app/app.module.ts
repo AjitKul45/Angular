@@ -75,6 +75,10 @@ const IisIE =
         interactionType: InteractionType.Redirect,
         protectedResourceMap: new Map([
           ['https://graph.microsoft.com/v1.0/me', ['user.Read']],
+          [
+            'localhost',
+            ['api://b8b46961-3706-4e35-a336-5327e93770ae/Api.Scope'],
+          ],
         ]),
       }
     ),
