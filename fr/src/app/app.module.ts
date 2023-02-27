@@ -22,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import { RedirectHtmlInterceptor } from './shared/interceptors/redirect-html.interceptor';
 
 //get browser information
 const IisIE =
@@ -36,6 +37,11 @@ const IisIE =
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MsalInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RedirectHtmlInterceptor,
       multi: true,
     },
     MsalGuard,

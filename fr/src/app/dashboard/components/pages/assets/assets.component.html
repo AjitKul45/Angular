@@ -63,7 +63,7 @@
         <td>{{ item.owner }}</td>
         <td>{{ item.remarks }}</td>
         <td>{{ item.ram }}</td>
-        <td>{{ item.vendorId }}</td>
+        <td>{{ item.vendorId | vendorsName : vendors }}</td>
         <td>
           <button
             type="submit"
