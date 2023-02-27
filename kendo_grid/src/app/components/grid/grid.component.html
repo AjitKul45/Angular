@@ -1,0 +1,20 @@
+<kendo-grid
+  [kendoGridBinding]="users"
+  [sortable]="true"
+  [filterable]="true"
+  [pageSize]="10"
+  [pageable]="true"
+  [groupable]="true"
+>
+  <kendo-grid-column
+    field="id"
+    title="ID"
+    [filterable]="false"
+  ></kendo-grid-column>
+  <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+  <kendo-grid-column field="username" title="Username"></kendo-grid-column>
+  <kendo-grid-column field="email" title="Email"></kendo-grid-column>
+  <kendo-grid-column field="phone" title="Phone"></kendo-grid-column>
+  <kendo-grid-column field="website" title="Website"></kendo-grid-column>
+</kendo-grid>
+<kendo-grid [data]="users"></kendo-grid>
