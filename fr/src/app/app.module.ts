@@ -39,11 +39,11 @@ const IisIE =
       useClass: MsalInterceptor,
       multi: true,
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: RedirectHtmlInterceptor,
-      multi: true,
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: RedirectHtmlInterceptor,
+    //   multi: true,
+    // },
     MsalGuard,
   ],
   bootstrap: [AppComponent, MsalRedirectComponent],

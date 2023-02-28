@@ -10,6 +10,7 @@ import { Album } from 'src/app/models/model';
 })
 export class EditingComponent implements OnInit {
   albums: any = [];
+  assets: any = [];
 
   constructor(private http: HttpClient) {}
 
@@ -18,6 +19,12 @@ export class EditingComponent implements OnInit {
       .get('https://jsonplaceholder.typicode.com/todos')
       .subscribe((res) => {
         this.albums = res;
+      });
+
+    this.http
+      .get('https://localhost:7113/api/AssetDetails/GetAllAssetDetails')
+      .subscribe((res) => {
+        this.assets = res;
       });
   }
 

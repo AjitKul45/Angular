@@ -5,6 +5,7 @@
     [pageSize]="10"
     [pageable]="true"
     [sortable]="true"
+    [groupable]="true"
   >
     <ng-template kendoGridToolbarTemplate>
       <button kendoGridAddCommand type="button">Add New</button>
@@ -70,3 +71,4 @@
     </kendo-grid-command-column>
   </kendo-grid>
 </form>
+<kendo-grid [kendoGridBinding]="assets"></kendo-grid>
