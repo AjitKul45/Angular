@@ -1,0 +1,72 @@
+<form #form="ngForm">
+  <kendo-grid
+    [kendoGridTemplateEditing]="createNewAlbum"
+    [kendoGridBinding]="albums"
+    [pageSize]="10"
+    [pageable]="true"
+    [sortable]="true"
+  >
+    <ng-template kendoGridToolbarTemplate>
+      <button kendoGridAddCommand type="button">Add New</button>
+    </ng-template>
+    <kendo-grid-column field="userId" title="User Id">
+      <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+        <input
+          [(ngModel)]="dataItem.userId"
+          kendoGridFocusable
+          name="userId"
+          class="k-textbox k-input k-rounded-md"
+          required
+          type="number"
+        />
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="id" title="Id">
+      <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+        <input
+          [(ngModel)]="dataItem.id"
+          kendoGridFocusable
+          name="id"
+          class="k-textbox k-input k-rounded-md"
+          required
+          type="number"
+        />
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="title" title="Title">
+      <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+        <input
+          [(ngModel)]="dataItem.title"
+          kendoGridFocusable
+          name="title"
+          class="k-textbox k-input k-rounded-md"
+          required
+          type="text"
+        />
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="completed" title="Completed">
+      <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+        <input
+          [(ngModel)]="dataItem.completed"
+          name="completed"
+          type="checkbox"
+        />
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-command-column title="command" [width]="220">
+      <ng-template kendoGridCellTemplate let-isNew="isNew">
+        <button kendoGridEditCommand type="button" [primary]="true">
+          Edit
+        </button>
+        <button kendoGridRemoveCommand type="button">Remove</button>
+        <button kendoGridSaveCommand type="button">
+          {{ isNew ? "Add" : "Update" }}
+        </button>
+        <button kendoGridCancelCommand type="button">
+          {{ isNew ? "Discard changes" : "Cancel" }}
+        </button>
+      </ng-template>
+    </kendo-grid-command-column>
+  </kendo-grid>
+</form>
