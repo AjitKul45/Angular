@@ -1,0 +1,45 @@
+<form>
+  <kendo-grid
+    [kendoGridTemplateEditing]="createNew"
+    [kendoGridBinding]="data"
+    [groupable]="groupable"
+    [filterable]="filterable"
+    [sortable]="sortable"
+  >
+    <ng-template kendoGridAddCommand type="button">Add New</ng-template>
+    <ng-container *ngFor="let head of heading; let d; of: data">
+      <kendo-grid-column field="data.head" title="head">
+        <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+          <input
+            type="text"
+            [(ngModel)]="dataItem.head"
+            class="k-textbox k-input k-rounded-md"
+            name="head"
+          />
+        </ng-template>
+        <kendo-grid-command-column title="command" [width]="220">
+          <ng-template
+            kendoGridCellTemplate
+            let-isNew="isNew"
+            let-dataItem="dataItem"
+          >
+            <button kendoGridEditCommand type="button" [primary]="true">
+              Edit
+            </button>
+            <button kendoGridRemoveCommand type="button">Remove</button>
+            <button kendoGridSaveCommand type="button" *ngIf="!isNew">
+              Add
+            </button>
+            <button kendoGridSaveCommand type="button" *ngIf="isNew">
+              Update
+            </button>
+
+            <button kendoGridCancelCommand type="button">
+              {{ isNew ? "Discard changes" : "Cancel" }}
+            </button>
+          </ng-template>
+        </kendo-grid-command-column>
+      </kendo-grid-column>
+    </ng-container>
+  </kendo-grid>
+</form>
