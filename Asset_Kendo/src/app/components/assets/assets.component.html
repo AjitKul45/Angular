@@ -4,8 +4,12 @@
     [kendoGridTemplateEditing]="createNewAsset"
     [groupable]="true"
     [sortable]="true"
-    [pageable]="true"
+    [pageable]="{
+      buttonCount: 3,
+      pageSizes: [5, 10, 15, 20]
+    }"
     [pageSize]="5"
+    [resizable]="true"
   >
     <ng-template kendoGridToolbarTemplate>
       <button kendoGridAddCommand type="button">Add New</button>
@@ -108,7 +112,11 @@
         />
       </ng-template>
     </kendo-grid-column>
-    <kendo-grid-column field="expiryDate" title="expiryDate">
+    <kendo-grid-column
+      field="expiryDate"
+      title="expiryDate"
+      format="{0:yyyy-MM-dd}"
+    >
       <ng-template kendoGridEditTemplate let-dataItem="dataItem">
         <input
           [(ngModel)]="dataItem.expiryDate"
