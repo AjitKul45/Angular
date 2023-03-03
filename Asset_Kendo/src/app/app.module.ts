@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { VendorService } from './services/vendor.service';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
+import { NotificationModule } from '@progress/kendo-angular-notification';
+
 
 @NgModule({
   declarations: [AppComponent, AssetsComponent, VendorComponent, GridComponent],
@@ -26,6 +28,7 @@ import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
     NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
     BrowserAnimationsModule,
     AppRoutingModule,
+    NotificationModule,
   ],
   providers: [HttpClient, AssetDetailService, VendorService],
   bootstrap: [AppComponent],
