@@ -12,16 +12,20 @@ import { VendorComponent } from './components/vendor/vendor.component';
 import { GridComponent } from './components/grid/grid.component';
 import { FormsModule } from '@angular/forms';
 import { VendorService } from './services/vendor.service';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [AppComponent, AssetsComponent, VendorComponent, GridComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     GridModule,
     HttpClientModule,
     FormsModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
     BrowserAnimationsModule,
+    AppRoutingModule,
   ],
   providers: [HttpClient, AssetDetailService, VendorService],
   bootstrap: [AppComponent],
