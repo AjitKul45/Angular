@@ -1,4 +1,4 @@
-<form>
+<form #myForm="ngForm">
   <kendo-grid
     [kendoGridBinding]="assets"
     [kendoGridTemplateEditing]="createNewAsset"
@@ -12,7 +12,7 @@
     [resizable]="true"
   >
     <ng-template kendoGridToolbarTemplate>
-      <button kendoGridAddCommand type="button">Add New</button>
+      <button type="button" (click)="openform()">Add New</button>
     </ng-template>
     <kendo-grid-column field="id" title="Id">
       <ng-template kendoGridEditTemplate let-dataItem="dataItem">
@@ -20,7 +20,6 @@
           [(ngModel)]="dataItem.id"
           name="id"
           class="k-textbox k-input k-rounded-md"
-          required
         />
       </ng-template>
     </kendo-grid-column>
@@ -157,6 +156,7 @@
           name="ram"
           class="k-textbox k-input k-rounded-md"
           type="text"
+          pattern="^\d+$"
           required
         />
       </ng-template>

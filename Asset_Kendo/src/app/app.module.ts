@@ -12,13 +12,19 @@ import { VendorComponent } from './components/vendor/vendor.component';
 import { GridComponent } from './components/grid/grid.component';
 import { FormsModule } from '@angular/forms';
 import { VendorService } from './services/vendor.service';
-import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { NotificationModule } from '@progress/kendo-angular-notification';
-
-
+import AssetfromComponent from './components/forms/assetfrom/assetfrom.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
-  declarations: [AppComponent, AssetsComponent, VendorComponent, GridComponent],
+  declarations: [
+    AppComponent,
+    AssetsComponent,
+    VendorComponent,
+    GridComponent,
+    AssetfromComponent,
+  ],
   imports: [
     BrowserModule,
     GridModule,
@@ -27,6 +33,7 @@ import { NotificationModule } from '@progress/kendo-angular-notification';
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
     BrowserAnimationsModule,
+    NgbModule,
     AppRoutingModule,
     NotificationModule,
   ],

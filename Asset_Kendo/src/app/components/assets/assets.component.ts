@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from '@progress/kendo-angular-notification';
-import { Asset } from 'src/app/models/models';
+import { Asset } from '../../models/models';
 import { AssetDetailService } from 'src/app/services/asset-detail.service';
+import AssetfromComponent from '../forms/assetfrom/assetfrom.component';
 
 @Component({
   selector: 'app-assets',
@@ -13,6 +15,7 @@ export class AssetsComponent implements OnInit {
   updateFlag: boolean = false;
   constructor(
     private assetsService: AssetDetailService,
+    private modalService: NgbModal,
     private notificationService: NotificationService
   ) {}
 
@@ -56,10 +59,12 @@ export class AssetsComponent implements OnInit {
   }
 
   RemoveAsset(id: number) {
-    this.assetsService.DeleteAsset(id).subscribe((res) => {
-      console.log(res);
-      this.Show();
-    });
+    if (confirm('Are you sure you want to delete')) {
+      this.assetsService.DeleteAsset(id).subscribe((res) => {
+        console.log(res);
+        this.Show();
+      });
+    }
   }
 
   Show(): void {
@@ -80,5 +85,9 @@ export class AssetsComponent implements OnInit {
       animation: { type: 'fade', duration: 400 },
       type: { style: 'error', icon: true },
     });
+  }
+
+  openform() {
+    const modalref = this.modalService.open(AssetfromComponent);
   }
 }
