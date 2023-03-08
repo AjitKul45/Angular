@@ -1,1 +1,5 @@
-<app-grid [data]="vendors" [heading]="headings"></app-grid>
+<kendo-grid [data]="vendors">
+  <ng-template kendoGridToolbarTemplate>
+    <button (click)="openVendorform()">Add new</button>
+  </ng-template>
+</kendo-grid>

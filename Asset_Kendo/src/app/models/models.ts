@@ -14,3 +14,12 @@ export class Asset {
   ram!: string;
   vendorId!: number;
 }
+
+export class Vendor {
+  id!: number;
+  name!: string;
+  contactNo!: string;
+  address!: string;
+  registrationDate!: Date;
+  terminationDate!: Date;
+}

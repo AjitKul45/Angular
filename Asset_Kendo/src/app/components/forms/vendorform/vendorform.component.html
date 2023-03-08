@@ -1,0 +1,82 @@
+<section class="container mt-3">
+  <div>
+    <h3 class="centre-text"><u>Add Vendor</u></h3>
+    <div class="mt-3 mx-auto">
+      <form
+        [formGroup]="vendorForm"
+        (ngSubmit)="submitVendorDetails()"
+        class="my-auto"
+      >
+        <div class="mb-3 leftBox">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            formControlName="name"
+            placeholder="Enter Name"
+          />
+          <span class="errorMessage" *ngIf="!vendorForm.invalid"
+            >Enter Valid Name</span
+          >
+        </div>
+
+        <div class="mb-3 rightBox">
+          <label for="contact" class="form-label">Contact No</label>
+          <input
+            type="text"
+            class="form-control"
+            name="contact"
+            formControlName="contactNo"
+            placeholder="Enter Contact Number"
+          />
+          <span class="errorMessage"
+            >{{
+              FormControls.contact.invalid &&
+                (FormControls.contact.dirty || FormControls.contact.touched)
+            }}Enter Valid Contact Number</span
+          >
+        </div>
+        <div class="mb-2">
+          <label for="address" class="form-label">Address</label>
+          <textarea
+            type="textarea"
+            class="form-control"
+            name="address"
+            formControlName="address"
+            placeholder="Enter Address"
+          ></textarea>
+          <span class="errorMessage">Enter Valid Address</span>
+        </div>
+        <div class="mb-3 leftBox">
+          <label for="registration">Registration Date</label>
+          <input
+            class="form-control"
+            name="registration"
+            readonly
+            formControlName="registrationDate"
+          />
+        </div>
+        <div class="mb-3 rightBox">
+          <label for="termination">Termination Date</label>
+          <input
+            type="date"
+            class="form-control"
+            name="termination"
+            placeholder="Select termination date"
+            formControlName="terminationDate"
+          />
+          <span class="errorMessage">Select Valid Date</span>
+        </div>
+        <div class="centre-text mb-3">
+          <input
+            type="submit"
+            class="btn btn-primary"
+            value="Submit"
+            [disabled]="vendorForm.invalid"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

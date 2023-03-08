@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { VendorService } from 'src/app/services/vendor.service';
+import { VendorformComponent } from '../forms/vendorform/vendorform.component';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-vendor',
@@ -17,10 +20,18 @@ export class VendorComponent implements OnInit {
     'terminationDate',
   ];
 
-  constructor(private vendorService: VendorService) {}
+  constructor(
+    private vendorService: VendorService,
+    private modalService: NgbModal
+  ) {}
+
   ngOnInit(): void {
     this.vendorService.GetVendors().subscribe((res) => {
       this.vendors = res;
     });
+  }
+
+  openVendorform() {
+    this.modalService.open(VendorformComponent);
   }
 }
