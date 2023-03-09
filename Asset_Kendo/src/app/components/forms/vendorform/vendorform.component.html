@@ -16,7 +16,13 @@
             formControlName="name"
             placeholder="Enter Name"
           />
-          <span class="errorMessage" *ngIf="!vendorForm.invalid"
+          <span
+            class="errorMessage"
+            *ngIf="
+              vendorForm.controls['name'].invalid &&
+              (vendorForm.controls['name'].dirty ||
+                vendorForm.controls['name'].touched)
+            "
             >Enter Valid Name</span
           >
         </div>
@@ -30,12 +36,16 @@
             formControlName="contactNo"
             placeholder="Enter Contact Number"
           />
-          <span class="errorMessage"
-            >{{
-              FormControls.contact.invalid &&
-                (FormControls.contact.dirty || FormControls.contact.touched)
-            }}Enter Valid Contact Number</span
+          <span
+            *ngIf="
+              vendorForm.controls['contactNo'].invalid &&
+              (vendorForm.controls['contactNo'].dirty ||
+                vendorForm.controls['contactNo'].touched)
+            "
+            class="errorMessage"
           >
+            Enter Valid Contact Number
+          </span>
         </div>
         <div class="mb-2">
           <label for="address" class="form-label">Address</label>
@@ -46,7 +56,15 @@
             formControlName="address"
             placeholder="Enter Address"
           ></textarea>
-          <span class="errorMessage">Enter Valid Address</span>
+          <span
+            class="errorMessage"
+            *ngIf="
+              vendorForm.controls['address'].invalid &&
+              (vendorForm.controls['address'].dirty ||
+                vendorForm.controls['address'].touched)
+            "
+            >Enter Valid Address</span
+          >
         </div>
         <div class="mb-3 leftBox">
           <label for="registration">Registration Date</label>
@@ -66,7 +84,15 @@
             placeholder="Select termination date"
             formControlName="terminationDate"
           />
-          <span class="errorMessage">Select Valid Date</span>
+          <span
+            class="errorMessage"
+            *ngIf="
+              vendorForm.controls['terminationDate'].invalid &&
+              (vendorForm.controls['terminationDate'].dirty ||
+                vendorForm.controls['terminationDate'].touched)
+            "
+            >Select Valid Date</span
+          >
         </div>
         <div class="centre-text mb-3">
           <input
