@@ -38,10 +38,6 @@ export class VendorformComponent {
     terminationDate: new FormControl('', Validators.required),
   });
 
-  get FormControls(): any {
-    return this.vendorForm['controls'];
-  }
-
   submitVendorDetails() {
     this.vendorservice.AddVendor(this.vendorForm.value).subscribe((res) => {
       console.log(res);
