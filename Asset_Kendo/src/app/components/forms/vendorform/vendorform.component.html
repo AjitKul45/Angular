@@ -8,7 +8,9 @@
         class="my-auto"
       >
         <div class="mb-3 leftBox">
-          <label for="name" class="form-label">Name</label>
+          <label for="name" class="form-label"
+            >Name<sup class="star">*</sup></label
+          >
           <input
             type="text"
             class="form-control"
@@ -23,12 +25,21 @@
               (vendorForm.controls['name'].dirty ||
                 vendorForm.controls['name'].touched)
             "
-            >Enter Valid Name</span
           >
+            <span *ngIf="f.name.errors?.['minLength']"
+              >Minimun required length is 2</span
+            >
+            <span *ngIf="f.name.errors?.['pattern']"
+              >Enter only Alphabates</span
+            >
+            <span *ngIf="f.name.errors?.['required']">Enter Name</span>
+          </span>
         </div>
 
         <div class="mb-3 rightBox">
-          <label for="contact" class="form-label">Contact No</label>
+          <label for="contact" class="form-label"
+            >Contact No<sup class="star">*</sup></label
+          >
           <input
             type="text"
             class="form-control"
@@ -44,11 +55,18 @@
             "
             class="errorMessage"
           >
-            Enter Valid Contact Number
+            <span *ngIf="f.contactNo.errors?.['pattern']" class="errorMessage"
+              >Only 10 digits are allowed</span
+            >
+            <span *ngIf="f.contactNo.errors?.['required']" class="errorMessage"
+              >Enter Valid Contact Number</span
+            >
           </span>
         </div>
         <div class="mb-2">
-          <label for="address" class="form-label">Address</label>
+          <label for="address" class="form-label"
+            >Address<sup class="star">*</sup></label
+          >
           <textarea
             type="textarea"
             class="form-control"
@@ -73,16 +91,20 @@
             name="registration"
             readonly
             formControlName="registrationDate"
+            #rdate
           />
         </div>
         <div class="mb-3 rightBox">
-          <label for="termination">Termination Date</label>
+          <label for="termination"
+            >Termination Date<sup class="star">*</sup></label
+          >
           <input
             type="date"
             class="form-control"
             name="termination"
             placeholder="Select termination date"
             formControlName="terminationDate"
+            min="{{ vendorForm.controls['registrationDate'].value }}"
           />
           <span
             class="errorMessage"
