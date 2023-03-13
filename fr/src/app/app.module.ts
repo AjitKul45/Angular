@@ -22,7 +22,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
+import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { RedirectHtmlInterceptor } from './shared/interceptors/redirect-html.interceptor';
+import { HeaderInterceptor } from './shared/interceptors/header.interceptor';
 
 //get browser information
 const IisIE =
@@ -39,6 +42,11 @@ const IisIE =
       useClass: MsalInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeaderInterceptor,
+      multi: true,
+    },
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: RedirectHtmlInterceptor,
@@ -53,6 +61,8 @@ const IisIE =
     Ng2SearchPipeModule,
     HttpClientModule,
     AppRoutingModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,

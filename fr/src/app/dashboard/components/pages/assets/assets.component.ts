@@ -54,21 +54,24 @@ export class AssetsComponent implements OnInit, OnChanges {
     });
   }
 
+  /**
+   *
+   * @param data
+   */
   EditAsset(data: number) {
-    console.log(data + ' : ' + JSON.stringify(data));
-    this.dashboardService.GetAsset(data).subscribe((res: IAsset) => {
-      this.dashboardService.EmitAsset(res);
-      this.dashboardService.EmitFlag(true);
-    });
-    this.router.navigate(['/dashboard/AddAsset']);
+    this.dashboardService.emitupdateflag.next(true);
+
+    this.router.navigate(['/dashboard/EditAsset', data]);
   }
 
   DeleteAsset(value: any): void {
     console.log(value);
-    this.dashboardService.DeleteAsset(value).subscribe((res) => {
-      console.log(JSON.stringify(res));
-      this.assets = res;
-    });
+    if (confirm('Are you sure you want to delete this asset')) {
+      this.dashboardService.DeleteAsset(value).subscribe((res) => {
+        console.log(JSON.stringify(res));
+        this.assets = res;
+      });
+    }
   }
 
   sortByModel() {

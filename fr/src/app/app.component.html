@@ -1,5 +1,7 @@
-
+<ngx-ui-loader text="Loading ....."></ngx-ui-loader>
 <app-header></app-header>
-<router-outlet></router-outlet>
-<br/>
+<div ngxUiLoaderBlurred blue="10">
+  <router-outlet></router-outlet>
+</div>
+
 <app-footer></app-footer>

@@ -1,6 +1,7 @@
 <section class="container">
   <div class="card" style="padding: 5%; border-radius: 2%">
-    <h1>Add Asset</h1>
+    <h1 *ngIf="!updateflag">Add Asset</h1>
+    <h1 *ngIf="updateflag">Edit Asset</h1>
     <form class="form" (ngSubmit)="SubmitAsset()">
       <div class="form-group">
         <label for="Type">Type:</label>

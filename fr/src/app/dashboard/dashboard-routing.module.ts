@@ -28,6 +28,10 @@ const routes: Routes = [
     canActivate: [MsalGuard],
   },
   {
+    path: 'EditAsset/:id',
+    component: AddAssetComponent,
+  },
+  {
     path: 'AddVendor',
     component: AddVendorComponent,
   },
