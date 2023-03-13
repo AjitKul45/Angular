@@ -37,7 +37,7 @@ export class AssetTransactionComponent implements OnInit {
       },
       (err) => {}
     );
-    this.dashboardService.GetAssets().subscribe(
+    this.dashboardService.getAssets().subscribe(
       (res) => {
         console.log(res);
         this.assets = res;

@@ -31,19 +31,19 @@ export class ApplicationService {
     return this.httpClient.post(`api/AssetTransaction`, obj);
   }
 
-  GetVendors(): Observable<any> {
+  getVendors(): Observable<any> {
     return this.httpClient.get('api/Vendor/GetAllVendors');
   }
 
-  AddAsset(asset: IAsset): Observable<any> {
+  addAsset(asset: IAsset): Observable<any> {
     return this.httpClient.post(`api/AssetDetails/AddAsset`, asset);
   }
 
-  GetAssets(): Observable<any> {
+  getAssets(): Observable<any> {
     return this.httpClient.get('api/AssetDetails/GetAllAssetDetails');
   }
 
-  DeleteAsset(value: any): Observable<any> {
+  deleteAsset(value: any): Observable<any> {
     return this.httpClient.delete(`api/AssetDetails/DeleteAsset/${value}`);
   }
   submitAsset(obj: any, id: number) {
@@ -57,25 +57,25 @@ export class ApplicationService {
     return this.httpClient.get(`api/AssetTransaction/get_by_email/${email}`);
   }
 
-  AddVendor(vendor: IVendor): Observable<any> {
+  addVendor(vendor: IVendor): Observable<any> {
     return this.httpClient.post(`api/Vendor/AddVendor`, vendor, headers);
   }
 
-  DeleteVender(vendor: number): Observable<any> {
+  deleteVender(vendor: number): Observable<any> {
     return this.httpClient.delete(`api/Vendor/DeleteVendor/${vendor}`);
   }
 
-  GetTransaction(id: number): Observable<any> {
+  getTransaction(id: number): Observable<any> {
     return this.httpClient.get(
       `api/AssetTransaction/GetAssetTransactionById/${id}`
     );
   }
 
-  GetAsset(id: any): Observable<any> {
+  getAsset(id: any): Observable<any> {
     return this.httpClient.get(`api/AssetDetails/GetAssetDetails/${id}`);
   }
 
-  EditAsset(id: any, asset: IAsset): Observable<any> {
+  editAsset(id: any, asset: IAsset): Observable<any> {
     return this.httpClient.put(`api/AssetDetails/UpdateAsset/${id}`, asset);
   }
 

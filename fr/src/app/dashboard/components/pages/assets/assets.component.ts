@@ -32,7 +32,7 @@ export class AssetsComponent implements OnInit, OnChanges {
   vendors!: IVendor;
 
   ngOnInit(): void {
-    this.dashboardService.GetAssets().subscribe((res) => {
+    this.dashboardService.getAssets().subscribe((res) => {
       this.assets = res;
       for (let i = 0; i < this.assets.length; i++) {
         //this.dropdown.push(this.assets[i].model);
@@ -42,14 +42,14 @@ export class AssetsComponent implements OnInit, OnChanges {
       }
     });
 
-    this.dashboardService.GetVendors().subscribe((res) => {
+    this.dashboardService.getVendors().subscribe((res) => {
       this.vendors = res;
     });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('in onChanges');
-    this.dashboardService.GetAssets().subscribe((res) => {
+    this.dashboardService.getAssets().subscribe((res) => {
       this.assets = res;
     });
   }
@@ -67,7 +67,7 @@ export class AssetsComponent implements OnInit, OnChanges {
   DeleteAsset(value: any): void {
     console.log(value);
     if (confirm('Are you sure you want to delete this asset')) {
-      this.dashboardService.DeleteAsset(value).subscribe((res) => {
+      this.dashboardService.deleteAsset(value).subscribe((res) => {
         console.log(JSON.stringify(res));
         this.assets = res;
       });
@@ -75,7 +75,7 @@ export class AssetsComponent implements OnInit, OnChanges {
   }
 
   sortByModel() {
-    this.dashboardService.GetAssets().subscribe((res) => {
+    this.dashboardService.getAssets().subscribe((res) => {
       this.sort = [];
       this.assets = res;
 
