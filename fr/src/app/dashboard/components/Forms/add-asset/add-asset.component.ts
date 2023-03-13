@@ -38,37 +38,30 @@ export class AddAssetComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    console.log('fetching vendors...');
-    this.dashboardService.GetVendors().subscribe((res) => {
+    this.dashboardService.getVendors().subscribe((res) => {
       this.vendors = res;
     });
 
     this.dashboardService.emitupdateflag.subscribe((res) => {
-      console.log('in sub', res);
-
       this.dashboardService
-        .GetAsset(this.route.snapshot.paramMap.get('id'))
+        .getAsset(this.route.snapshot.paramMap.get('id'))
         .subscribe((a) => {
-          console.log('getting asset', a);
           this.updateflag = true;
-          console.log(this.updateflag);
           this.asset = a;
         });
     });
   }
 
-  SubmitAsset(): void {
+  submitAsset(): void {
     console.log(this.asset.vendorId);
     if (!this.updateflag) {
-      this.dashboardService.AddAsset(this.asset).subscribe((response) => {
-        console.log(JSON.stringify(this.asset));
-        console.log('Asset added successfully');
+      this.dashboardService.addAsset(this.asset).subscribe((response) => {
         this.router.navigate(['/dashboard']);
       });
     } else {
       this.updateflag = false;
       this.dashboardService
-        .EditAsset(this.asset.id, this.asset)
+        .editAsset(this.asset.id, this.asset)
         .subscribe((res) => {
           this.router.navigate(['/dashboard/Assets']);
         });
