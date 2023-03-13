@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from '@progress/kendo-angular-notification';
 import { Vendor } from 'src/app/models/models';
+import { SharedService } from 'src/app/services/shared.service';
 import { VendorService } from 'src/app/services/vendor.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class VendorformComponent {
 
   constructor(
     private vendorservice: VendorService,
+    private shared: SharedService,
     private activeModel: NgbActiveModal,
     private router: Router,
     private notificationService: NotificationService
@@ -51,6 +53,7 @@ export class VendorformComponent {
         console.log(res);
         this.activeModel.close();
         this.showMsg('Vendor added successfully');
+        this.shared.changeState(true);
       });
     }
   }

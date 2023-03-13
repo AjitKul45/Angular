@@ -6,6 +6,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { EditService, GridDataResult } from '@progress/kendo-angular-grid';
 import { State } from '@progress/kendo-data-query';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-vendor',
@@ -28,9 +29,16 @@ export class VendorComponent implements OnInit {
 
   constructor(
     private vendorService: VendorService,
+    private shared: SharedService,
     private modalService: NgbModal // @Inject(EditService) editServiceFactory: () => EditService
   ) {
     // this.editService = editServiceFactory();
+
+    this.shared.callAssetList.subscribe((item) => {
+      if (item) {
+        this.GetAll();
+      }
+    });
   }
 
   ngOnInit(): void {

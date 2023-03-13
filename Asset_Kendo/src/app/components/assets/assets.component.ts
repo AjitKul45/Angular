@@ -4,6 +4,7 @@ import { NotificationService } from '@progress/kendo-angular-notification';
 import { Asset } from '../../models/models';
 import { AssetDetailService } from 'src/app/services/asset-detail.service';
 import AssetfromComponent from '../forms/assetfrom/assetfrom.component';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-assets',
