@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { IAsset } from '../dashboard/components/Forms/Models/iasset';
 import { IAssetTransaction } from '../dashboard/components/Forms/Models/iasset-transaction';
 import { IVendor } from '../dashboard/components/Forms/Models/ivendor';
@@ -78,8 +78,9 @@ export class ApplicationService {
   EditAsset(id: any, asset: IAsset): Observable<any> {
     return this.httpClient.put(`api/AssetDetails/UpdateAsset/${id}`, asset);
   }
+
   emitAsset = new Subject<IAsset>();
-  emitupdateflag = new Subject<boolean>();
+  emitupdateflag = new BehaviorSubject<boolean>(false);
   emitTransaction = new Subject<IAssetTransaction>();
   EmitAsset(Asset: IAsset) {
     console.log('emitting asset');

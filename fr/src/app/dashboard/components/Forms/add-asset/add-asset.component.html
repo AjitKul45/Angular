@@ -2,20 +2,20 @@
   <div class="card" style="padding: 5%; border-radius: 2%">
     <h1 *ngIf="!updateflag">Add Asset</h1>
     <h1 *ngIf="updateflag">Edit Asset</h1>
-    <form class="form" (ngSubmit)="SubmitAsset()">
+    <form class="form" (ngSubmit)="submitAsset()">
       <div class="form-group">
-        <label for="Type">Type:</label>
-        <input
-          type="text"
-          placeholder="type of asset"
-          name="Type"
-          class="form-control"
-          required
-          [(ngModel)]="asset.tyape"
-        />
+        <label for="Type">Type</label>
+        <select class="form-select" [(ngModel)]="asset.tyape" name="type">
+          <option selected>Select Type</option>
+          <option value="Laptop">Laptop</option>
+          <option value="Desktop">Desktop</option>
+          <option value="Moniter">Moniter</option>
+          <Option value="Keyboard">Keyboard</Option>
+          <option value="Mouse">Mouse</option>
+        </select>
       </div>
       <div class="form-group">
-        <label for="Name">Name:</label>
+        <label for="Name">Name</label>
         <input
           type="text"
           placeholder="Name"
@@ -26,21 +26,22 @@
         />
       </div>
       <div class="form-group">
-        <label for="Proprietary">Proprietary:</label>
-        <input
-          type="text"
-          placeholder="proprietary"
-          name="Proprietary"
-          class="form-control"
-          required
+        <label for="Proprietary">Proprietary</label>
+        <select
+          class="form-select"
+          name="proprietary"
           [(ngModel)]="asset.proprietary"
-        />
+        >
+          <option selected>Select Proprietary</option>
+          <option value="Own">Own</option>
+          <option value="Rent">Rent</option>
+        </select>
       </div>
       <div class="form-group">
-        <label for="configuration">Configuration:</label>
+        <label for="configuration">Configuration</label>
         <input
           type="text"
-          placeholder="configuration"
+          placeholder="Configuration"
           name="configuration"
           class="form-control"
           required
@@ -48,10 +49,10 @@
         />
       </div>
       <div class="form-group">
-        <label for="serviceTag">ServiceTag:</label>
+        <label for="serviceTag">Service Tag</label>
         <input
           type="text"
-          placeholder="serviceTag"
+          placeholder="Service Tag"
           name="serviceTag"
           class="form-control"
           required
@@ -59,10 +60,10 @@
         />
       </div>
       <div class="form-group">
-        <label for="model">Model:</label>
+        <label for="model">Model</label>
         <input
           type="text"
-          placeholder="model"
+          placeholder="Model"
           name="model"
           class="form-control"
           required
@@ -70,10 +71,10 @@
         />
       </div>
       <div class="form-group">
-        <label for="hostName">HostName:</label>
+        <label for="hostName">Host Name</label>
         <input
           type="text"
-          placeholder="hostName"
+          placeholder="Host Name"
           name="hostName"
           class="form-control"
           required
@@ -81,21 +82,18 @@
         />
       </div>
       <div class="form-group">
-        <label for="oem">OEM:</label>
-        <input
-          type="text"
-          placeholder="oem"
-          name="oem"
-          class="form-control"
-          required
-          [(ngModel)]="asset.oem"
-        />
+        <label for="oem">OEM</label>
+        <select class="form-select" name="oem" [(ngModel)]="asset.oem">
+          <option selected>Select Option</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
       <div class="form-group">
-        <label for="expiryDate">Expiry Date:</label>
+        <label for="expiryDate">Expiry Date</label>
         <input
           type="date"
-          placeholder="expiryDate"
+          placeholder="Expiry Date"
           name="expiryDate"
           class="form-control"
           required
@@ -103,10 +101,10 @@
         />
       </div>
       <div class="form-group">
-        <label for="owner">Owner:</label>
+        <label for="owner">Owner</label>
         <input
           type="text"
-          placeholder="owner"
+          placeholder="Owner"
           name="owner"
           class="form-control"
           required
@@ -114,10 +112,10 @@
         />
       </div>
       <div class="form-group">
-        <label for="remarks">Remarks:</label>
+        <label for="remarks">Remarks</label>
         <input
           type="text"
-          placeholder="remarks"
+          placeholder="Remarks"
           name="remarks"
           class="form-control"
           required
@@ -125,10 +123,10 @@
         />
       </div>
       <div class="form-group">
-        <label for="ram">RAM:</label>
+        <label for="ram">RAM</label>
         <input
           type="text"
-          placeholder="ram"
+          placeholder="RAM"
           name="ram"
           class="form-control"
           required
@@ -136,12 +134,13 @@
         />
       </div>
       <div class="form-group">
-        <label for="vendorId">Vendor:</label>
+        <label for="vendorId">Vendor</label>
         <select
           class="form-select"
           [(ngModel)]="asset.vendorId"
           name="vendorId"
         >
+          <option selected>Select Vendor</option>
           <option *ngFor="let item of vendors" value="{{ item.id }}">
             {{ item.name }}
           </option>
@@ -158,7 +157,7 @@
       <div *ngIf="updateflag" class="form-group">
         <input
           type="submit"
-          class="btn btn-primary"
+          class="btn btn-primary my-auto"
           style="position: relative; left: 40%"
           value="Update"
         />

@@ -2,24 +2,39 @@
   <button
     [routerLink]="['/dashboard/AddAsset']"
     routerLinkActive="router-link-active"
-    class="btn btn-success"
+    class="btn btn-success mx-3"
   >
     Add New Asset
   </button>
-  <select [(ngModel)]="selectModel" (change)="sortByModel()">
-    <option value="All" selected>All</option>
-    <option *ngFor="let item of myset" [value]="item">{{ item }}</option>
-  </select>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <input
-    type="search"
-    #searchString
-    placeholder="Search model.."
-    (blur)="searchBox()"
-  />
-  <button type="button" class="btn btn-secondary btn-sm" (click)="searchBox()">
-    🔍
-  </button>
+  <!-- <div class="row g-3">
+    <div class="col">
+      <select
+        class="form-select mx-3 my-3"
+        style="width: max-content"
+        [(ngModel)]="selectModel"
+        (change)="sortByModel()"
+      >
+        <option value="All" selected>All</option>
+        <option *ngFor="let item of myset" [value]="item">{{ item }}</option>
+      </select>
+    </div>
+    <div class="col">
+      <input
+        type="search"
+        #searchString
+        placeholder="Search model.."
+        (blur)="searchBox()"
+      />
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm"
+        (click)="searchBox()"
+      >
+        🔍
+      </button>
+    </div>
+  </div> -->
+
   <br />
   <br />
   <div class="centre-text">

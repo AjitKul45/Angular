@@ -16,7 +16,7 @@ export class AddAssetComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  vendors: any;
+  vendors: any = [];
 
   updateflag: boolean = false;
 
@@ -42,22 +42,18 @@ export class AddAssetComponent implements OnInit {
     this.dashboardService.GetVendors().subscribe((res) => {
       this.vendors = res;
     });
-    // this.dashboardService.subject.subscribe((res) =>{
-    //   console.log("in Add Asset Subject : "+JSON.stringify(res));
-    //   this.asset = res;
-    //   console.log(this.asset);
-    // })
 
     this.dashboardService.emitupdateflag.subscribe((res) => {
       console.log('in sub', res);
-      if (res) {
-        this.dashboardService
-          .GetAsset(this.route.snapshot.paramMap.get('id'))
-          .subscribe((a) => {
-            console.log('getting asset', a);
-            this.asset = a;
-          });
-      }
+
+      this.dashboardService
+        .GetAsset(this.route.snapshot.paramMap.get('id'))
+        .subscribe((a) => {
+          console.log('getting asset', a);
+          this.updateflag = true;
+          console.log(this.updateflag);
+          this.asset = a;
+        });
     });
   }
 
