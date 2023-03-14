@@ -1,4 +1,4 @@
-<kendo-grid [kendoGridBinding]="vendors">
+<kendo-grid [kendoGridBinding]="vendors" [pageable]="true" [pageSize]="10">
   <ng-template kendoGridToolbarTemplate>
     <button (click)="openVendorform()">Add new</button>
   </ng-template>
