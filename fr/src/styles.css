@@ -304,7 +304,7 @@ button {
 }
 
 /* Navbar */
-.navbar {
+/* .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -333,7 +333,7 @@ button {
 
 .navbar .welcome span {
   margin-right: 0.6rem;
-}
+} */
 
 /* Landing Page */
 .landing {
@@ -355,8 +355,7 @@ button {
   text-align: center;
 }
 
-
-.tableScroll{
+.tableScroll {
   display: block;
   max-width: fit-content;
   margin: 0 auto;
@@ -364,17 +363,17 @@ button {
   white-space: nowrap;
 }
 
-.search-box{
+.search-box {
   width: 500px;
 }
 
-.centre-text{
+.centre-text {
   text-align: center;
 }
 
-.form-format{
+.form-format {
   padding: 5%;
-   border-radius: 2%;
-    width: 50%;
-    margin-left: 250px;
+  border-radius: 2%;
+  width: 50%;
+  margin-left: 250px;
 }
