@@ -1,4 +1,7 @@
 .sidebtn {
+}
+
+.nav {
   display: flex;
-  flex-flow: row-reverse;
+  flex-direction: row-reverse;
 }
