@@ -18,6 +18,7 @@ import { NotificationModule } from '@progress/kendo-angular-notification';
 import AssetfromComponent from './components/forms/assetfrom/assetfrom.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { VendorformComponent } from './components/forms/vendorform/vendorform.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { VendorformComponent } from './components/forms/vendorform/vendorform.co
     GridComponent,
     AssetfromComponent,
     VendorformComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

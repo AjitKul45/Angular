@@ -5,6 +5,7 @@ import { Asset } from '../../models/models';
 import { AssetDetailService } from 'src/app/services/asset-detail.service';
 import AssetfromComponent from '../forms/assetfrom/assetfrom.component';
 import { SharedService } from 'src/app/services/shared.service';
+import { filter, map } from 'rxjs';
 
 @Component({
   selector: 'app-assets',
@@ -21,10 +22,13 @@ export class AssetsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.assetsService.GetAssets().subscribe((res) => {
-      console.log(res);
-      this.assets = res;
-    });
+    this.assetsService
+      .GetAssets()
+
+      .subscribe((res) => {
+        console.log(res);
+        this.assets = res;
+      });
   }
 
   createNewAsset() {
@@ -89,6 +93,6 @@ export class AssetsComponent implements OnInit {
   }
 
   openform() {
-    const modalref = this.modalService.open(AssetfromComponent);
+    const modalref = this.modalService.open(AssetfromComponent, { size: 'lg' });
   }
 }

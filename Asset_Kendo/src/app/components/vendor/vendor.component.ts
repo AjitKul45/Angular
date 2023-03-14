@@ -46,7 +46,7 @@ export class VendorComponent implements OnInit {
   }
 
   openVendorform() {
-    this.modalService.open(VendorformComponent);
+    this.modalService.open(VendorformComponent, { size: 'lg' });
     this.GetAll();
   }
 

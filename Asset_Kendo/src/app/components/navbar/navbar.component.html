@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Assete Management</a>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Asset
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="/assets">Asset List</a></li>
+            <li><a class="dropdown-item" href="/vendors">Add Asset</a></li>
+            <li><a class="dropdown-item" href="#">Assign Asset</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Vendor
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="/assets">Vendors List</a></li>
+            <li><a class="dropdown-item" href="/vendors">Add Vendor</a></li>
+          </ul>
+        </li>
+        <li class="ms-1 sidebtn">
+          <div *ngIf="!flag">
+            <button type="button" class="btn btn-dark" (click)="login()">
+              Login
+            </button>
+          </div>
+          <div *ngIf="flag">
+            <button type="button" class="btn btn-dark" (click)="logout()">
+              Logout
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

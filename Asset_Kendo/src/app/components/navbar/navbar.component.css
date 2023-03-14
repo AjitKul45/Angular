@@ -1,0 +1,4 @@
+.sidebtn {
+  display: flex;
+  flex-flow: row-reverse;
+}
