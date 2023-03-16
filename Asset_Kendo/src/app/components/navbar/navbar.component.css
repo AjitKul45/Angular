@@ -2,6 +2,8 @@
 }
 
 .nav {
-  display: flex;
-  flex-direction: row-reverse;
+  /* display: flex; */
+  /* flex-direction: row-reverse; */
+  position: fixed;
+  z-index: 1;
 }

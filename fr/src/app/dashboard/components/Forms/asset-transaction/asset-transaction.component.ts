@@ -30,42 +30,25 @@ export class AssetTransactionComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
-    console.log('================================================');
     this.dashboardService.getUserList().subscribe(
       (res) => {
-        console.log(res);
+        this.issuers = res;
       },
       (err) => {}
     );
     this.dashboardService.getAssets().subscribe(
       (res) => {
-        console.log(res);
         this.assets = res;
       },
-      (err) => {
-        console.log(err);
-      }
+      (err) => {}
     );
   }
   addAssetTransaction() {
-    // let obj = {
-    //   empId: this.transaction.empId,
-    //   email: this.transaction.email,
-    //   userName: this.transaction.userName,
-    //   location: this.transaction.location,
-    //   issueDate: this.transaction.issueDate,
-    //   submitDate: this.transaction.submitDate,
-    //   assetId: this.transaction.assetId,
-    //   issuedBy: this.transaction.issuedBy,
-    //   department: this.transaction.department,
-    // };
-    console.log(this.transaction);
     this.dashboardService.assignAsset(this.transaction).subscribe(
       (res) => {
         this.router.navigate([`dashboard`]);
       },
       (error) => console.log(error)
     );
-    console.log('in addAssetTransaction method called');
   }
 }

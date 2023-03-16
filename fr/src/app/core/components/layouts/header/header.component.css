@@ -4,4 +4,9 @@
 .nav {
   display: flex;
   flex-direction: row-reverse;
+  height: 70px;
+  position: fixed;
+  width: 100vw;
+  top: 0%;
+  left: 0%;
 }

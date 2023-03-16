@@ -25,7 +25,6 @@ export class VendorsComponent implements OnInit {
 
   DeleteVender(data: number) {
     this.dashboardService.deleteVender(data).subscribe((res) => {
-      console.log(JSON.stringify(res));
       this.vendors = res;
     });
   }

@@ -17,11 +17,9 @@ export class RedirectHtmlInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    console.log('Inside Error Interceptor');
     return next.handle(request).pipe(
       catchError((err) => {
         if (err.status == 403) {
-          console.log('unauthrized');
           this.router.navigate(['/dashboard']);
           let errormsg = err.message;
           return throwError({

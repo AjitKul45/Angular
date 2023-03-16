@@ -1,6 +1,8 @@
 <nav class="navbar nav navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="['/dashboard']">Asset Management</a>
+    <a class="navbar-brand" [routerLink]="['/dashboard']"
+      ><h2>Asset Management</h2></a
+    >
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
@@ -17,19 +19,19 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li>
-              <a class="dropdown-item" [routerLink]="['/dashboard/Assets']"
+              <a class="dropdown-item" [routerLink]="['/dashboard/assets']"
                 >Asset List</a
               >
             </li>
             <li>
-              <a class="dropdown-item" [routerLink]="['/dashboard/AddAsset']"
+              <a class="dropdown-item" [routerLink]="['/dashboard/add-asset']"
                 >Add Asset</a
               >
             </li>
             <li>
               <a
                 class="dropdown-item"
-                [routerLink]="['/dashboard/AssetTransaction']"
+                [routerLink]="['/dashboard/asset-transaction']"
                 >Assign Asset</a
               >
             </li>
@@ -49,12 +51,14 @@
 
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li>
-              <a class="dropdown-item" [routerLink]="['/dashboard/ShowVenders']"
+              <a
+                class="dropdown-item"
+                [routerLink]="['/dashboard/show-venders']"
                 >Vendors List</a
               >
             </li>
             <li>
-              <a class="dropdown-item" [routerLink]="['/dashboard/AddVendor']"
+              <a class="dropdown-item" [routerLink]="['/dashboard/add-vendor']"
                 >Add Vendor</a
               >
             </li>

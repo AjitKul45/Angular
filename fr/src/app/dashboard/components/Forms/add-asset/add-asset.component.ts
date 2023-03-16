@@ -52,8 +52,11 @@ export class AddAssetComponent implements OnInit {
     });
   }
 
+  /**
+   * if updateflag == flase, asset will be submitted
+   * if updateflag == true, asset will be updated
+   */
   submitAsset(): void {
-    console.log(this.asset.vendorId);
     if (!this.updateflag) {
       this.dashboardService.addAsset(this.asset).subscribe((response) => {
         this.router.navigate(['/dashboard']);
@@ -63,7 +66,7 @@ export class AddAssetComponent implements OnInit {
       this.dashboardService
         .editAsset(this.asset.id, this.asset)
         .subscribe((res) => {
-          this.router.navigate(['/dashboard/Assets']);
+          this.router.navigate(['/dashboard/assets']);
         });
     }
   }

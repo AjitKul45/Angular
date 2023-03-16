@@ -35,7 +35,6 @@ export class AssetsComponent implements OnInit, OnChanges {
     this.dashboardService.getAssets().subscribe((res) => {
       this.assets = res;
       for (let i = 0; i < this.assets.length; i++) {
-        //this.dropdown.push(this.assets[i].model);
         if (!this.myset.has(this.assets[i].model)) {
           this.myset.add(this.assets[i].model);
         }
@@ -48,27 +47,24 @@ export class AssetsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('in onChanges');
     this.dashboardService.getAssets().subscribe((res) => {
       this.assets = res;
     });
   }
 
   /**
-   *
+   * edting asset and transfer user to edit-asset page with asset-id
    * @param data
    */
-  EditAsset(data: number) {
+  editAsset(data: number) {
     this.dashboardService.emitupdateflag.next(true);
 
-    this.router.navigate(['/dashboard/EditAsset', data]);
+    this.router.navigate(['/dashboard/edit-asset', data]);
   }
 
-  DeleteAsset(value: any): void {
-    console.log(value);
-    if (confirm('Are you sure you want to delete this asset')) {
+  deleteAsset(value: any): void {
+    if (confirm('Are you sure, you want to delete this asset?')) {
       this.dashboardService.deleteAsset(value).subscribe((res) => {
-        console.log(JSON.stringify(res));
         this.assets = res;
       });
     }
@@ -79,8 +75,6 @@ export class AssetsComponent implements OnInit, OnChanges {
       this.sort = [];
       this.assets = res;
 
-      console.log('In Sort (Before Sorting)' + JSON.stringify(this.assets));
-      console.log('Dropdown Value = ' + this.selectModel);
       //use filters
       let x = from(this.assets).pipe(
         filter(
@@ -88,13 +82,10 @@ export class AssetsComponent implements OnInit, OnChanges {
             assetsFlter.model.toLowerCase() === this.selectModel.toLowerCase()
         )
       );
-      console.log('x Value = ' + JSON.stringify(x));
       //subscribe to pipe of filter
       x.subscribe((result) => {
-        console.log('In Sort (after Sorting)' + JSON.stringify(result));
         this.sort.push(result);
       });
-      console.log('In Sort array' + JSON.stringify(this.sort));
       this.assets = this.sort;
       if (this.selectModel.toLowerCase() === 'all' || this.selectModel === '') {
         this.assets = res;
@@ -103,7 +94,6 @@ export class AssetsComponent implements OnInit, OnChanges {
   }
 
   searchBox() {
-    console.log(this.search.nativeElement.value);
     this.selectModel = this.search.nativeElement.value;
     this.sortByModel();
   }

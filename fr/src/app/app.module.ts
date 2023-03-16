@@ -26,7 +26,6 @@ import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { RedirectHtmlInterceptor } from './shared/interceptors/redirect-html.interceptor';
 import { HeaderInterceptor } from './shared/interceptors/header.interceptor';
-
 //get browser information
 const IisIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||

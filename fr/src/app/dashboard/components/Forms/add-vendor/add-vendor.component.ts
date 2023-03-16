@@ -26,7 +26,6 @@ export class AddVendorComponent {
   submitVendorDetails() {
     this.dashboardService.addVendor(this.vendor).subscribe(
       (res) => {
-        console.log(this.vendor);
         alert('Vendor Added !');
         // this.vendor = res;
         this.router.navigate(['dashboard']);

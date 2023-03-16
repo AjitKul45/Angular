@@ -18,16 +18,12 @@ export class SubmitAssetComponent {
     private router: Router
   ) {}
   fetchAssetTransaction() {
-    console.log('method called');
     this.dashboardService.getAssetDetailByEmail(this.email).subscribe(
       (res) => {
-        console.log(res);
         this.flag = true;
         this.transaction = res;
       },
-      (err) => {
-        console.log(err);
-      }
+      (err) => {}
     );
   }
   submitAsset() {
@@ -36,12 +32,9 @@ export class SubmitAssetComponent {
       .submitAsset(this.transaction, this.transaction.id)
       .subscribe(
         (res) => {
-          console.log(res);
           this.router.navigate([`dashboard`]);
         },
-        (error) => {
-          console.log(error);
-        }
+        (error) => {}
       );
   }
 }

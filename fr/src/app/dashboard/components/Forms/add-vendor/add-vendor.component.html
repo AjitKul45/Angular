@@ -32,7 +32,7 @@
         ></textarea>
       </div>
       <div class="mb-3">
-        <label for="registration">Registration Date</label>
+        <label for="registration" class="form-label">Registration Date</label>
         <input
           type="date"
           class="form-control"
@@ -42,7 +42,7 @@
         />
       </div>
       <div class="mb-3">
-        <label for="termination">Termination Date</label>
+        <label for="termination" class="form-label">Termination Date</label>
         <input
           type="date"
           class="form-control"
@@ -51,11 +51,7 @@
         />
       </div>
       <div class="centre-text mb-3">
-        <input
-          type="submit"
-          class="btn btn-primary"
-          value="Submit"
-        />
+        <input type="submit" class="btn btn-primary" value="Submit" />
       </div>
     </form>
     <div class="centre-text">
@@ -63,8 +59,9 @@
         [routerLink]="['/dashboard']"
         routerLinkActive="router-link-active"
         class="btn btn-warning"
-        >Back</button
       >
+        Back
+      </button>
     </div>
   </div>
 </section>

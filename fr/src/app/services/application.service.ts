@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NotificationService } from '@progress/kendo-angular-notification';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { IAsset } from '../dashboard/components/Forms/Models/iasset';
 import { IAssetTransaction } from '../dashboard/components/Forms/Models/iasset-transaction';
@@ -75,6 +76,12 @@ export class ApplicationService {
     return this.httpClient.get(`api/AssetDetails/GetAssetDetails/${id}`);
   }
 
+  /**
+   *
+   * @param id
+   * @param asset
+   * @returns
+   */
   editAsset(id: any, asset: IAsset): Observable<any> {
     return this.httpClient.put(`api/AssetDetails/UpdateAsset/${id}`, asset);
   }
@@ -82,13 +89,18 @@ export class ApplicationService {
   emitAsset = new Subject<IAsset>();
   emitupdateflag = new BehaviorSubject<boolean>(false);
   emitTransaction = new Subject<IAssetTransaction>();
-  EmitAsset(Asset: IAsset) {
-    console.log('emitting asset');
-    console.log(Asset);
-    this.emitAsset.next(Asset);
-  }
 
-  EmitFlag(flag: boolean) {
-    this.emitupdateflag.next(flag);
+  // showMsg(msg: string): void {
+  //   this.notificationService.show({
+  //     content: 'Success notification',
+  //     hideAfter: 1000,
+  //     position: { horizontal: 'center', vertical: 'top' },
+  //     animation: { type: 'fade', duration: 1000 },
+  //     type: { style: 'success', icon: true },
+  //   });
+  // }
+
+  getAssetCounts(): Observable<any> {
+    return this.httpClient.get('api/AssetDetails/GetAssetsCount');
   }
 }

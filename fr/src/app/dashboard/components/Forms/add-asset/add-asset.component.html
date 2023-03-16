@@ -13,7 +13,7 @@
             #type="ngModel"
             required
           >
-            <option>Select Type</option>
+            <option value="">Select Type</option>
             <option value="Laptop">Laptop</option>
             <option value="Desktop">Desktop</option>
             <option value="Moniter">Moniter</option>
@@ -48,7 +48,7 @@
             required
             [(ngModel)]="asset.proprietary"
           >
-            <option selected>Select Proprietary</option>
+            <option value="">Select Proprietary</option>
             <option value="Own">Own</option>
             <option value="Rent">Rent</option>
           </select>
@@ -135,11 +135,13 @@
             required
             [(ngModel)]="asset.oem"
           >
-            <option selected>Select Option</option>
+            <option value="">Select Option</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
           </select>
-          <span *ngIf="oem.invalid && oem.touched" class="errorMessage"
+          <span
+            *ngIf="oem.invalid && (oem.touched || oem.dirty)"
+            class="errorMessage"
             >Select OEM</span
           >
         </div>
@@ -216,7 +218,7 @@
           required
           name="vendorId"
         >
-          <option selected>Select Vendor</option>
+          <option value="0">Select Vendor</option>
           <option *ngFor="let item of vendors" value="{{ item.id }}">
             {{ item.name }}
           </option>
@@ -224,7 +226,7 @@
         <span *ngIf="vendor.invalid && vendor.touched" class="errorMessage"
           >Select Vendor</span
         >
-        <p><a [routerLink]="['/dashboard/AddVendor']">Add New Vendor</a></p>
+        <p><a [routerLink]="['/dashboard/add-vendor']">Add New Vendor</a></p>
       </div>
       <div *ngIf="!updateflag" class="form-group">
         <input

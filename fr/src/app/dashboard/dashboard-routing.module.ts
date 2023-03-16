@@ -15,28 +15,28 @@ const routes: Routes = [
     component: AdminDashboardComponent,
   },
   {
-    path: 'AssetTransaction',
+    path: 'asset-transaction',
     component: AssetTransactionComponent,
   },
   {
-    path: 'AddAsset',
+    path: 'add-asset',
     component: AddAssetComponent,
   },
   {
-    path: 'Assets',
+    path: 'assets',
     component: AssetsComponent,
     canActivate: [MsalGuard],
   },
   {
-    path: 'EditAsset/:id',
+    path: 'edit-asset/:id',
     component: AddAssetComponent,
   },
   {
-    path: 'AddVendor',
+    path: 'add-vendor',
     component: AddVendorComponent,
   },
   {
-    path: 'ShowVenders',
+    path: 'show-venders',
     component: VendorsComponent,
   },
 ];
