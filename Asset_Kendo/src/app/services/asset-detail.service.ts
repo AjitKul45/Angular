@@ -24,4 +24,12 @@ export class AssetDetailService {
   AddAsset(asset: Asset): Observable<any> {
     return this.http.post(`api/AssetDetails/AddAsset`, asset);
   }
+
+  getAssetCount(): Observable<any> {
+    return this.http.get('api/AssetDetails/GetAssetsCount');
+  }
+
+  getUnassignedAssetsCount(): Observable<any> {
+    return this.http.get('api/AssetDetails/GetStatus');
+  }
 }

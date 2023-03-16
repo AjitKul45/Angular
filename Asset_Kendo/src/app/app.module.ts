@@ -19,6 +19,8 @@ import AssetfromComponent from './components/forms/assetfrom/assetfrom.component
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { VendorformComponent } from './components/forms/vendorform/vendorform.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import DashboardComponent from './components/dashboard/dashboard.component';
+import { ChartModule, ChartsModule } from '@progress/kendo-angular-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,9 +30,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AssetfromComponent,
     VendorformComponent,
     NavbarComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
+    ChartModule,
     GridModule,
     HttpClientModule,
     FormsModule,

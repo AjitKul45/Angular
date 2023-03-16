@@ -13,10 +13,12 @@
           #type="ngModel"
           class="form-select"
         >
-          <option value="LAPTOP" selected="selected">LAPTOP</option>
-          <option value="MAC">MAC</option>
-          <option value="DESKTOP">DESKTOP</option>
-          <option value="MACBOOK">MACBOOK</option>
+          <option value="">Select Type</option>
+          <option value="Laptop">Laptop</option>
+          <option value="Desktop">Desktop</option>
+          <option value="Moniter">Moniter</option>
+          <Option value="Keyboard">Keyboard</Option>
+          <option value="Mouse">Mouse</option>
         </select>
         <span *ngIf="type.invalid && type.touched" class="errorMessage"
           >Select Valid Type</span

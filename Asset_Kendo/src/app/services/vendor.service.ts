@@ -16,4 +16,8 @@ export class VendorService {
   AddVendor(vendor: any): Observable<any> {
     return this.http.post('api/Vendor/AddVendor', vendor);
   }
+
+  getAssetCountByVendor(): Observable<any> {
+    return this.http.get('api/Vendor/GetVendorStatus');
+  }
 }
