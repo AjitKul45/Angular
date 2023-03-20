@@ -1,0 +1,24 @@
+.card {
+  padding: 20px;
+}
+.leftBox {
+  float: left;
+  height: 90px;
+  width: 32%;
+}
+.middleBox {
+  float: left;
+  height: 90px;
+  width: 34%;
+}
+.rightBox {
+  float: right;
+  height: 90px;
+  width: 33%;
+}
+.errorMessage {
+  color: red;
+}
+.star {
+  color: red;
+}

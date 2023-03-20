@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NotificationService } from '@progress/kendo-angular-notification';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { IAsset } from '../dashboard/components/Forms/Models/iasset';
 import { IAssetTransaction } from '../dashboard/components/Forms/Models/iasset-transaction';
@@ -28,8 +27,8 @@ export class ApplicationService {
   }
 
   assignAsset(obj: any) {
-    console.log('Inside assignAsset');
-    return this.httpClient.post(`api/AssetTransaction`, obj);
+    console.log(obj);
+    return this.httpClient.post(`api/AssetTransaction/AssignAsset`, obj);
   }
 
   getVendors(): Observable<any> {
@@ -102,5 +101,17 @@ export class ApplicationService {
 
   getAssetCounts(): Observable<any> {
     return this.httpClient.get('api/AssetDetails/GetAssetsCount');
+  }
+
+  getUnassignedAssetsCount(): Observable<any> {
+    return this.httpClient.get('api/AssetDetails/GetStatus');
+  }
+
+  getAssetCountByVendor(): Observable<any> {
+    return this.httpClient.get('api/Vendor/GetVendorStatus');
+  }
+
+  getUnAssignedAssetList(): Observable<any> {
+    return this.httpClient.get('api/AssetDetails/GetListOfUnassignedAsset');
   }
 }
