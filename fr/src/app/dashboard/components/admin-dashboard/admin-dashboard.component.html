@@ -1,43 +1,76 @@
 <section class="container">
-  <div class="text-center">
-    <table class="table">
-      <tr>
-        <th>
-          <a
-            [routerLink]="['/dashboard/asset-transaction']"
-            routerLinkActive="router-link-active"
-            >Asset Assign</a
+  <div class="row">
+    <div class="col-7 my-auto mx-auto">
+      <div class="row mt-4 mb-4 mx-auto">
+        <div class="card col-4 mx-auto text-center" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title">Total Assets</h5>
+            <h6 class="card-subtitle mb-2 text-muted text-center">
+              {{ totalAssetCount }}
+            </h6>
+          </div>
+        </div>
+        <div class="card col-4 mx-auto text-center" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title">Total Vendors</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              {{ totalVendorCount }}
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4 mb-4 mx-auto">
+        <div class="card col-4 mx-auto text-center" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title">Assigned Asset</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              {{ totalAssetCount - unassignedAssetCount }}
+            </h6>
+          </div>
+        </div>
+        <div class="card col-4 mx-auto text-center" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title">Unassigned Assets</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              {{ unassignedAssetCount }}
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="row my-auto">
+        <div class="col-8 mx-auto">
+          <kendo-chart title="Assets By types">
+            <kendo-chart-legend position="bottom"></kendo-chart-legend>
+            <kendo-chart-series>
+              <kendo-chart-series-item
+                type="pie"
+                [data]="assetsCount"
+                field="count"
+                categoryField="type"
+                [labels]="{ visible: true, content: labelContent }"
+              >
+              </kendo-chart-series-item>
+            </kendo-chart-series>
+          </kendo-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row my-auto">
+    <div class="col-10 mx-auto">
+      <kendo-chart title="Vendor And Asset Status">
+        <kendo-chart-series>
+          <kendo-chart-series-item
+            type="column"
+            [data]="assetsByVendorsCount"
+            field="count"
+            categoryField="name"
           >
-        </th>
-        <th>
-          <a
-            [routerLink]="['/dashboard/add-asset']"
-            routerLinkActive="router-link-active"
-            >Asset Submit</a
-          >
-        </th>
-        <th>
-          <a
-            [routerLink]="['/dashboard/assets']"
-            routerLinkActive="router-link-active"
-            >Assets</a
-          >
-        </th>
-        <th>
-          <a
-            [routerLink]="['/dashboard/add-vendor']"
-            routerLinkActive="router-link-active"
-            >Add vendor</a
-          >
-        </th>
-        <th>
-          <a
-            [routerLink]="['/dashboard/show-venders']"
-            routerLinkActive="router-link-active"
-            >All vendors</a
-          >
-        </th>
-      </tr>
-    </table>
+          </kendo-chart-series-item>
+        </kendo-chart-series>
+      </kendo-chart>
+    </div>
   </div>
 </section>

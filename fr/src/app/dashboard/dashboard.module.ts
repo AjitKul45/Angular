@@ -15,6 +15,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { VendorsComponent } from './components/pages/vendors/vendors.component';
 import { AddVendorComponent } from './components/Forms/add-vendor/add-vendor.component';
 import { VendorsNamePipe } from '../shared/custom-pipe/vendors-name.pipe';
+import { ChartsModule } from '@progress/kendo-angular-charts';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { VendorsNamePipe } from '../shared/custom-pipe/vendors-name.pipe';
     CommonModule,
     FormsModule,
     HttpClientModule,
+    ChartsModule,
     Ng2SearchPipeModule,
     DashboardRoutingModule,
   ],
