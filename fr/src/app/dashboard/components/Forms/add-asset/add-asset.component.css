@@ -7,3 +7,6 @@
 .errorMessage {
   color: red;
 }
+.card {
+  position: static;
+}

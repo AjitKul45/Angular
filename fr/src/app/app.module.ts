@@ -26,6 +26,10 @@ import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { RedirectHtmlInterceptor } from './shared/interceptors/redirect-html.interceptor';
 import { HeaderInterceptor } from './shared/interceptors/header.interceptor';
+import { ChartsModule } from '@progress/kendo-angular-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SparklineModule } from '@progress/kendo-angular-charts';
+import 'hammerjs';
 //get browser information
 const IisIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -60,6 +64,9 @@ const IisIE =
     Ng2SearchPipeModule,
     HttpClientModule,
     AppRoutingModule,
+    ChartsModule,
+    SparklineModule,
+    BrowserAnimationsModule,
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
     MatToolbarModule,

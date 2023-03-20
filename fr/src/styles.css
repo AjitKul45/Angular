@@ -21,9 +21,6 @@ body {
   background-color: #fff;
   color: #333;
 }
-.card {
-  position: static;
-}
 
 a {
   color: var(--primary-color);
@@ -46,6 +43,7 @@ img {
   padding: 0 2rem;
   margin-top: 6rem;
   margin-bottom: 3rem;
+  position: static;
 }
 
 .TableContainer {
