@@ -29,7 +29,12 @@ import { HeaderInterceptor } from './shared/interceptors/header.interceptor';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SparklineModule } from '@progress/kendo-angular-charts';
+import { NotificationModule } from '@progress/kendo-angular-notification';
 import 'hammerjs';
+import { ReactiveFormsModule } from '@angular/forms';
+import { IconModule } from '@progress/kendo-angular-icons';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 //get browser information
 const IisIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -50,6 +55,11 @@ const IisIE =
       useClass: HeaderInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: RedirectHtmlInterceptor,
@@ -61,10 +71,14 @@ const IisIE =
   imports: [
     BrowserModule,
     CoreModule,
+    ReactiveFormsModule,
     Ng2SearchPipeModule,
     HttpClientModule,
     AppRoutingModule,
+    GridModule,
+    NotificationModule,
     ChartsModule,
+    IconModule,
     SparklineModule,
     BrowserAnimationsModule,
     NgxUiLoaderModule,

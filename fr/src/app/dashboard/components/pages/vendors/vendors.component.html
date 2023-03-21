@@ -1,18 +1,23 @@
 <section class="TableContainer">
-<div class="centre-text">
+  <div class="centre-text">
     <button
       [routerLink]="['/dashboard/AddVendor']"
       routerLinkActive="router-link-active"
       class="btn btn-success"
-  
-      >Add New Vendor</button
     >
-</div><br/>
-<div class="centre-text">
-    <input type="text" class="search-box"
-   [(ngModel)]="searchText" placeholder="   🔍Start searching......">
-</div>
-  <br/>
+      Add New Vendor
+    </button>
+  </div>
+  <br />
+  <div class="centre-text">
+    <input
+      type="text"
+      class="search-box"
+      [(ngModel)]="searchText"
+      placeholder="   🔍Start searching......"
+    />
+  </div>
+  <br />
   <table class="table tableScroll">
     <thead>
       <th>Name</th>
@@ -23,8 +28,7 @@
       <th></th>
     </thead>
     <tbody>
-      <tr *ngFor="let item of vendors | filter:searchText">
-        
+      <tr *ngFor="let item of vendors | filter : searchText">
         <td>{{ item.name }}</td>
         <td>{{ item.contactNo }}</td>
         <td>{{ item.address }}</td>
@@ -35,7 +39,8 @@
             type="submit"
             value="{{ item.id }}"
             (click)="DeleteVender(item.id)"
-            class="btn btn-danger">
+            class="btn btn-danger"
+          >
             Delete
           </button>
         </td>
@@ -43,13 +48,15 @@
     </tbody>
   </table>
 
-  <br>
+  <br />
   <div class="centre-text">
-  <button
-    [routerLink]="['/dashboard']"
-    routerLinkActive="router-link-active"
-    class="btn btn-warning"
-    >Back</button
-  >
-</div>
+    <button
+      [routerLink]="['/dashboard']"
+      routerLinkActive="router-link-active"
+      class="btn btn-warning"
+    >
+      Back
+    </button>
+  </div>
+  <!-- <kendo-grid [data]="vendors"></kendo-grid> -->
 </section>

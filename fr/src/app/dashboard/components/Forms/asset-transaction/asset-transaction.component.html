@@ -1,6 +1,6 @@
 <section class="container">
   <div class="card">
-    <h1>Asset Transaction</h1>
+    <h2 class="text-center">Assign Asset</h2>
     <form #assignAsset="ngForm" (ngSubmit)="addAssetTransaction()">
       <div class="mb-3 leftBox">
         <label for="assetSelection" class="form-label"
@@ -8,10 +8,13 @@
         >&nbsp;
         <select
           name="assetSelection"
+          class="form-select"
           [(ngModel)]="transaction.assetId"
           style="width: 96%; height: 40%"
           #assetSelection="ngModel"
+          required
         >
+          <option value="0" selected>Select Asset</option>
           <option value="" *ngFor="let item of assets" [value]="item.id">
             {{ item.tyape }}&emsp;{{ item.name }}&emsp;{{ item.ram }}
           </option>
@@ -86,9 +89,12 @@
         <select
           [(ngModel)]="transaction.location"
           name="Location"
+          class="form-select"
           style="width: 96%; height: 40%"
           #Location="ngModel"
+          required
         >
+          <option value="" selected>Select Location</option>
           <option value="HJDU1">HJU1</option>
 
           <option value="HJDU2">HJU2</option>
@@ -152,10 +158,13 @@
         ><select
           [(ngModel)]="transaction.department"
           name="Department"
+          class="form-select"
           style="width: 96%; height: 40%"
           #Department="ngModel"
+          required
         >
-          <option value="P&D" selected="selected">P&D</option>
+          <option value="">Select Department</option>
+          <option value="P&D">P&D</option>
           <option value="DU1">DU1</option>
           <option value="DU2">DU2</option>
           <option value="IT">IT</option>

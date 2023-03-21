@@ -45,10 +45,15 @@ export class AddAssetComponent implements OnInit {
     this.dashboardService.emitupdateflag.subscribe((res) => {
       this.dashboardService
         .getAsset(this.route.snapshot.paramMap.get('id'))
-        .subscribe((a) => {
-          this.updateflag = true;
-          this.asset = a;
-        });
+        .subscribe(
+          (response) => {
+            this.updateflag = true;
+            this.asset = response;
+          },
+          (err) => {
+            console.log(err.message);
+          }
+        );
     });
   }
 

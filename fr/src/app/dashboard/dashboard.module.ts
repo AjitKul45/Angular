@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AssetTransactionComponent } from './components/Forms/asset-transaction/asset-transaction.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AddAssetComponent } from './components/Forms/add-asset/add-asset.component';
 import { AssetsComponent } from './components/pages/assets/assets.component';
@@ -16,6 +16,8 @@ import { VendorsComponent } from './components/pages/vendors/vendors.component';
 import { AddVendorComponent } from './components/Forms/add-vendor/add-vendor.component';
 import { VendorsNamePipe } from '../shared/custom-pipe/vendors-name.pipe';
 import { ChartsModule } from '@progress/kendo-angular-charts';
+import { NotificationModule } from '@progress/kendo-angular-notification';
+import { GridModule } from '@progress/kendo-angular-grid';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,9 @@ import { ChartsModule } from '@progress/kendo-angular-charts';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
+    GridModule,
+    NotificationModule,
     HttpClientModule,
     ChartsModule,
     Ng2SearchPipeModule,

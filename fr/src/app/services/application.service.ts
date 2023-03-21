@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NotificationService } from '@progress/kendo-angular-notification';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { IAsset } from '../dashboard/components/Forms/Models/iasset';
 import { IAssetTransaction } from '../dashboard/components/Forms/Models/iasset-transaction';
@@ -13,7 +14,10 @@ const headers = { headers: { 'Content-Type': 'application/json' } };
   providedIn: 'root',
 })
 export class ApplicationService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private notificationService: NotificationService
+  ) {}
 
   public subject = new Subject<any>();
 
@@ -57,7 +61,7 @@ export class ApplicationService {
     return this.httpClient.get(`api/AssetTransaction/get_by_email/${email}`);
   }
 
-  addVendor(vendor: IVendor): Observable<any> {
+  addVendor(vendor: any): Observable<any> {
     return this.httpClient.post(`api/Vendor/AddVendor`, vendor, headers);
   }
 
@@ -113,5 +117,15 @@ export class ApplicationService {
 
   getUnAssignedAssetList(): Observable<any> {
     return this.httpClient.get('api/AssetDetails/GetListOfUnassignedAsset');
+  }
+
+  Show(msg: string): void {
+    this.notificationService.show({
+      content: msg,
+      hideAfter: 1000,
+      position: { horizontal: 'center', vertical: 'top' },
+      animation: { type: 'fade', duration: 1000 },
+      type: { style: 'success', icon: true },
+    });
   }
 }

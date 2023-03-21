@@ -9,7 +9,7 @@ import { IVendor } from 'src/app/dashboard/components/Forms/Models/ivendor';
   styleUrls: ['./vendors.component.css'],
 })
 export class VendorsComponent implements OnInit {
-  vendors!: IVendor;
+  vendors: any[] = [];
   searchText!: string;
 
   constructor(
@@ -24,8 +24,14 @@ export class VendorsComponent implements OnInit {
   }
 
   DeleteVender(data: number) {
-    this.dashboardService.deleteVender(data).subscribe((res) => {
-      this.vendors = res;
-    });
+    this.dashboardService.deleteVender(data).subscribe(
+      (res) => {
+        this.vendors = res;
+        this.dashboardService.Show('Deleted Successfully');
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
