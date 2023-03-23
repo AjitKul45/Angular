@@ -36,6 +36,10 @@ const routes: Routes = [
     component: AddVendorComponent,
   },
   {
+    path: 'edit-vendor/:id',
+    component: AddVendorComponent,
+  },
+  {
     path: 'show-venders',
     component: VendorsComponent,
   },
