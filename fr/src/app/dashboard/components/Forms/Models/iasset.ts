@@ -1,5 +1,5 @@
 export interface IAsset {
-  id: number;
+  id?: number | null;
   tyape: string;
   name: string;
   proprietary: string;

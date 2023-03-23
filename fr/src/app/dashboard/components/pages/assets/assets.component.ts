@@ -9,6 +9,7 @@ import {
 import { Route, Router } from '@angular/router';
 import { filter, from } from 'rxjs';
 import { ApplicationService } from 'src/app/services/application.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 import { IAsset } from '../../Forms/Models/iasset';
 import { IVendor } from '../../Forms/Models/ivendor';
 
@@ -20,6 +21,7 @@ import { IVendor } from '../../Forms/Models/ivendor';
 export class AssetsComponent implements OnInit, OnChanges {
   constructor(
     private dashboardService: ApplicationService,
+    private notification: NotificationsService,
     private router: Router
   ) {}
 
@@ -56,17 +58,24 @@ export class AssetsComponent implements OnInit, OnChanges {
    * edting asset and transfer user to edit-asset page with asset-id
    * @param data
    */
-  editAsset(data: number) {
+  editAsset(e: any) {
+    console.log(e.dataItem.id);
     this.dashboardService.emitupdateflag.next(true);
 
-    this.router.navigate(['/dashboard/edit-asset', data]);
+    this.router.navigate(['/dashboard/edit-asset', e.dataItem.id]);
   }
 
-  deleteAsset(value: any): void {
+  deleteAsset(e: any): void {
     if (confirm('Are you sure, you want to delete this asset?')) {
-      this.dashboardService.deleteAsset(value).subscribe((res) => {
-        this.assets = res;
-      });
+      this.dashboardService.deleteAsset(e.dataItem.id).subscribe(
+        (res) => {
+          this.assets = res;
+          this.notification.showSucces('Deleted Asset Successfully');
+        },
+        (err) => {
+          this.notification.showError('Deletion Failed');
+        }
+      );
     }
   }
 

@@ -1,62 +1,42 @@
 <section class="TableContainer">
-  <div class="centre-text">
-    <button
-      [routerLink]="['/dashboard/AddVendor']"
-      routerLinkActive="router-link-active"
-      class="btn btn-success"
+  <kendo-grid
+    [kendoGridBinding]="vendors"
+    [pageable]="true"
+    [pageSize]="10"
+    (remove)="deleteVender($event)"
+    (edit)="editVendor($event)"
+  >
+    <ng-template kendoGridToolbarTemplate>
+      <button
+        [routerLink]="['/dashboard/add-vendor']"
+        routerLinkActive="router-link-active"
+        class="btn btn-success"
+      >
+        Add New Vendor
+      </button>
+    </ng-template>
+    <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+    <kendo-grid-column field="address" title="Address"></kendo-grid-column>
+    <kendo-grid-column field="contactNo" title="ContactNo"></kendo-grid-column>
+    <kendo-grid-column field="registrationDate" title="RegistrationDate"
+      ><ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.registrationDate | date }}
+      </ng-template></kendo-grid-column
     >
-      Add New Vendor
-    </button>
-  </div>
-  <br />
-  <div class="centre-text">
-    <input
-      type="text"
-      class="search-box"
-      [(ngModel)]="searchText"
-      placeholder="   🔍Start searching......"
-    />
-  </div>
-  <br />
-  <table class="table tableScroll">
-    <thead>
-      <th>Name</th>
-      <th>ContactNo</th>
-      <th>Address</th>
-      <th>RegistrationDate</th>
-      <th>TerminationDate</th>
-      <th></th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of vendors | filter : searchText">
-        <td>{{ item.name }}</td>
-        <td>{{ item.contactNo }}</td>
-        <td>{{ item.address }}</td>
-        <td>{{ item.registrationDate | date }}</td>
-        <td>{{ item.terminationDate | date }}</td>
-        <td>
-          <button
-            type="submit"
-            value="{{ item.id }}"
-            (click)="DeleteVender(item.id)"
-            class="btn btn-danger"
-          >
-            Delete
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <br />
-  <div class="centre-text">
-    <button
-      [routerLink]="['/dashboard']"
-      routerLinkActive="router-link-active"
-      class="btn btn-warning"
-    >
-      Back
-    </button>
-  </div>
-  <!-- <kendo-grid [data]="vendors"></kendo-grid> -->
+    <kendo-grid-column field="terminationDate" title="TerminationDate"
+      ><ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.terminationDate | date }}
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-command-column title="command" [width]="157">
+      <ng-template kendoGridCellTemplate let-isNew="isNew">
+        <button kendoGridEditCommand class="btn btn-danger">
+          <i class="bi bi-pen"></i>
+        </button>
+        <button kendoGridRemoveCommand class="btn btn-warning">
+          <i class="bi bi-trash3"></i>
+        </button>
+      </ng-template>
+    </kendo-grid-command-column>
+  </kendo-grid>
 </section>

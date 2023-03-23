@@ -1,105 +1,54 @@
 <section class="TableContainer">
-  <div class="row">
-    <div class="col-3 centre-text">
+  <kendo-grid
+    [kendoGridBinding]="assets"
+    [pageable]="true"
+    [pageSize]="5"
+    [groupable]="true"
+    [sortable]="true"
+    (edit)="editAsset($event)"
+    (remove)="deleteAsset($event)"
+    filterable="menu"
+  >
+    <ng-template kendoGridToolbarTemplate>
       <button
         [routerLink]="['/dashboard/add-asset']"
         routerLinkActive="router-link-active"
-        class="btn btn-success mx-3"
+        class="btn btn-success"
       >
         Add New Asset
       </button>
-    </div>
-    <div class="col-7 centre-text">
-      <input
-        type="text"
-        class="search-box form-control"
-        style="width: 733px"
-        [(ngModel)]="searchText"
-        placeholder="   🔍Start searching......"
-      />
-    </div>
-    <div class="col-2 centre-text">
-      <button
-        [routerLink]="['/dashboard']"
-        routerLinkActive="router-link-active"
-        class="btn btn-warning"
-      >
-        Back
-      </button>
-    </div>
-  </div>
-
-  <!-- <div class="row g-3">
-    <div class="col">
-      <select
-        class="form-select mx-3 my-3"
-        style="width: max-content"
-        [(ngModel)]="selectModel"
-        (change)="sortByModel()"
-      >
-        <option value="All" selected>All</option>
-        <option *ngFor="let item of myset" [value]="item">{{ item }}</option>
-      </select>
-    </div>
-    <div class="col">
-      <input
-        type="search"
-        #searchString
-        placeholder="Search model.."
-        (blur)="searchBox()"
-      />
-      <button
-        type="button"
-        class="btn btn-secondary btn-sm"
-        (click)="searchBox()"
-      >
-        🔍
-      </button>
-    </div>
-  </div> -->
-  <table class="table tableScroll mt-5">
-    <thead>
-      <th>Type</th>
-      <th>Name</th>
-      <th>Proprietary</th>
-      <th>Configuration</th>
-      <th>Service Tag</th>
-      <th>Model</th>
-      <th>Expiry Date</th>
-      <th>Ram</th>
-      <th>Vendor Name</th>
-      <th style="text-align: center">Action</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of assets | filter : searchText">
-        <td>{{ item.tyape }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.proprietary }}</td>
-        <td>{{ item.configuration }}</td>
-        <td>{{ item.serviceTag }}</td>
-        <td>{{ item.model }}</td>
-        <td>{{ item.expiryDate | date }}</td>
-        <td>{{ item.ram }}</td>
-        <td>{{ item.vendorId | vendorsName : vendors }}</td>
-        <td>
-          <button
-            type="submit"
-            value="{{ item.id }}"
-            (click)="editAsset(item.id)"
-            class="btn btn-info"
-          >
-            Edit
-          </button>
-          <button
-            type="submit"
-            value="{{ item.id }}"
-            (click)="deleteAsset(item.id)"
-            class="btn btn-danger"
-          >
-            Delete
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    </ng-template>
+    <kendo-grid-column field="tyape" title="Type"></kendo-grid-column>
+    <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+    <kendo-grid-column
+      field="proprietary"
+      title="Proprietary"
+    ></kendo-grid-column>
+    <kendo-grid-column
+      field="configuration"
+      title="Configuration"
+    ></kendo-grid-column>
+    <kendo-grid-column
+      field="serviceTag"
+      title="Service Tag"
+    ></kendo-grid-column>
+    <kendo-grid-column field="model" title="Model"></kendo-grid-column>
+    <kendo-grid-column field="expiryDate" title="Expiry Date">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.expiryDate | date }}
+      </ng-template></kendo-grid-column
+    >
+    <kendo-grid-column field="ram" title="Ram"></kendo-grid-column>
+    <kendo-grid-column field="vendorId" title="Vendor"></kendo-grid-column>
+    <kendo-grid-command-column title="command" [width]="157">
+      <ng-template kendoGridCellTemplate>
+        <button kendoGridEditCommand class="btn btn-danger">
+          <i class="bi bi-pen"></i>
+        </button>
+        <button kendoGridRemoveCommand class="btn btn-warning">
+          <i class="bi bi-trash3"></i>
+        </button>
+      </ng-template>
+    </kendo-grid-command-column>
+  </kendo-grid>
 </section>
