@@ -18,6 +18,7 @@ import { VendorsNamePipe } from '../shared/custom-pipe/vendors-name.pipe';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import { GridModule } from '@progress/kendo-angular-grid';
+import { NotificationsService } from '../services/notifications.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,6 @@ import { GridModule } from '@progress/kendo-angular-grid';
     Ng2SearchPipeModule,
     DashboardRoutingModule,
   ],
-  providers: [],
+  providers: [NotificationsService],
 })
 export class DashboardModule {}
