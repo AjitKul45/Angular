@@ -1,6 +1,7 @@
 <section class="container">
   <div class="card form-format">
-    <h3 class="centre-text"><u>Add Vendor</u></h3>
+    <h2 *ngIf="!updateflag" class="text-center">Add Asset</h2>
+    <h2 *ngIf="updateflag" class="text-center">Edit Asset</h2>
     <div class="mt-3 mx-auto">
       <form
         [formGroup]="vendorForm"
@@ -26,13 +27,15 @@
                 vendorForm.controls['name'].touched)
             "
           >
-            <span *ngIf="f.name.errors?.['minLength']"
+            <span *ngIf="vendorForm.controls['name'].errors?.['minLength']"
               >Minimun required length is 2</span
             >
-            <span *ngIf="f.name.errors?.['pattern']"
+            <span *ngIf="vendorForm.controls['name'].errors?.['pattern']"
               >Enter only Alphabates</span
             >
-            <span *ngIf="f.name.errors?.['required']">Enter Name</span>
+            <span *ngIf="vendorForm.controls['name'].errors?.['required']"
+              >Enter Name</span
+            >
           </span>
         </div>
 
@@ -55,10 +58,14 @@
             "
             class="errorMessage"
           >
-            <span *ngIf="f.contactNo.errors?.['pattern']" class="errorMessage"
+            <span
+              *ngIf="vendorForm.controls['contactNo'].errors?.['pattern']"
+              class="errorMessage"
               >Only 10 digits are allowed</span
             >
-            <span *ngIf="f.contactNo.errors?.['required']" class="errorMessage"
+            <span
+              *ngIf="vendorForm.controls['contactNo'].errors?.['required']"
+              class="errorMessage"
               >Enter Valid Contact Number</span
             >
           </span>
@@ -91,6 +98,10 @@
             name="registration"
             readonly
             formControlName="registrationDate"
+            [value]="
+              this.vendorForm.controls['registrationDate'].value
+                | date : 'dd/MM/yyyy'
+            "
             #rdate
           />
         </div>
@@ -104,6 +115,10 @@
             name="termination"
             placeholder="Select termination date"
             formControlName="terminationDate"
+            [value]="
+              this.vendorForm.controls['terminationDate'].value
+                | date : 'dd/MM/yyyy'
+            "
             min="{{ vendorForm.controls['registrationDate'].value }}"
           />
           <span
@@ -116,18 +131,26 @@
             >Select Valid Date</span
           >
         </div>
-        <div class="centre-text mb-3">
+
+        <div *ngIf="!updateflag" class="form-group">
           <input
             type="submit"
             class="btn btn-primary"
+            style="position: relative; left: 40%"
             value="Submit"
+            [disabled]="vendorForm.invalid"
+          />
+        </div>
+        <div *ngIf="updateflag" class="form-group">
+          <input
+            type="submit"
+            class="btn btn-primary my-auto"
+            style="position: relative; left: 40%"
+            value="Update"
             [disabled]="vendorForm.invalid"
           />
         </div>
       </form>
     </div>
-  </div>
-  <div>
-    <button class="btn btn-primary" (click)="notify()">Notify</button>
   </div>
 </section>

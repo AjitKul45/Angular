@@ -1,7 +1,9 @@
+import { formatDate } from '@angular/common';
 import { JsonpInterceptor } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationService } from 'src/app/services/application.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 import { IAsset } from '../Models/iasset';
 
 @Component({
@@ -13,15 +15,16 @@ export class AddAssetComponent implements OnInit {
   constructor(
     private dashboardService: ApplicationService,
     private router: Router,
+    private notification: NotificationsService,
     private route: ActivatedRoute
   ) {}
 
   vendors: any = [];
-
+  todayDate: string = formatDate(new Date(), 'yyyy-MM-dd', 'en_US').toString();
   updateflag: boolean = false;
 
   asset: IAsset = {
-    id: 0,
+    id: null,
     tyape: '',
     name: '',
     proprietary: '',
@@ -49,6 +52,11 @@ export class AddAssetComponent implements OnInit {
           (response) => {
             this.updateflag = true;
             this.asset = response;
+            this.asset.expiryDate = formatDate(
+              this.asset.expiryDate,
+              'yyyy-MM-dd',
+              'en_US'
+            ).toString();
           },
           (err) => {
             console.log(err.message);
@@ -63,16 +71,26 @@ export class AddAssetComponent implements OnInit {
    */
   submitAsset(): void {
     if (!this.updateflag) {
-      this.dashboardService.addAsset(this.asset).subscribe((response) => {
-        this.router.navigate(['/dashboard']);
-      });
+      this.dashboardService.addAsset(this.asset).subscribe(
+        (response) => {
+          this.notification.showSucces('Asset Added Successfully');
+          this.router.navigate(['/dashboard']);
+        },
+        (err) => {
+          this.notification.showError('Add Asset Failed ');
+        }
+      );
     } else {
       this.updateflag = false;
-      this.dashboardService
-        .editAsset(this.asset.id, this.asset)
-        .subscribe((res) => {
+      this.dashboardService.editAsset(this.asset.id, this.asset).subscribe(
+        (res) => {
+          this.notification.showSucces('Update Successfully');
           this.router.navigate(['/dashboard/assets']);
-        });
+        },
+        (err) => {
+          this.notification.showError('Edit Asset Failed');
+        }
+      );
     }
   }
 }

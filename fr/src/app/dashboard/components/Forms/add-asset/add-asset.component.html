@@ -153,6 +153,7 @@
             name="expiryDate"
             #expdate="ngModel"
             class="form-control"
+            min="{{ todayDate }}"
             required
             [(ngModel)]="asset.expiryDate"
           />
@@ -201,11 +202,15 @@
             #ram="ngModel"
             class="form-control"
             required
+            pattern="(^[0-9]+.*(gb|tb)$)|(^(na|NA)$)"
             [(ngModel)]="asset.ram"
           />
-          <span *ngIf="ram.invalid && ram.touched" class="errorMessage"
-            >Enter RAM</span
-          >
+          <div *ngIf="ram.touched" class="errorMessage">
+            <p *ngIf="ram.errors?.['required']">Enter RAM</p>
+            <p *ngIf="ram.errors?.['pattern']">
+              Please enter valid ram with unit gb or tb
+            </p>
+          </div>
         </div>
       </div>
 
@@ -243,6 +248,7 @@
           class="btn btn-primary my-auto"
           style="position: relative; left: 40%"
           value="Update"
+          [disabled]="assetForm.invalid"
         />
       </div>
     </form>
