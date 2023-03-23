@@ -119,13 +119,7 @@ export class ApplicationService {
     return this.httpClient.get('api/AssetDetails/GetListOfUnassignedAsset');
   }
 
-  Show(msg: string): void {
-    this.notificationService.show({
-      content: msg,
-      hideAfter: 1000,
-      position: { horizontal: 'center', vertical: 'top' },
-      animation: { type: 'fade', duration: 1000 },
-      type: { style: 'success', icon: true },
-    });
+  getVendorById(id: any): Observable<any> {
+    return this.httpClient.get(`api/Vendor/GetVendor/${id}`);
   }
 }
