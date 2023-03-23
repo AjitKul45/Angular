@@ -5,17 +5,23 @@
         <div class="card col-4 mx-auto text-center" style="width: 15rem">
           <div class="card-body">
             <h5 class="card-title">Total Assets</h5>
-            <h6 class="card-subtitle mb-2 text-muted text-center">
+
+            <p class="card-text">
+              <i class="bi bi-laptop"></i> <i class="bi bi-pc-display"></i>
+            </p>
+            <h5 class="card-subtitle text-muted">
               {{ totalAssetCount }}
-            </h6>
+            </h5>
           </div>
         </div>
         <div class="card col-4 mx-auto text-center" style="width: 15rem">
           <div class="card-body">
             <h5 class="card-title">Total Vendors</h5>
-            <h6 class="card-subtitle mb-2 text-muted">
+
+            <p class="card-text"><i class="bi bi-people-fill"></i></p>
+            <h5 class="card-subtitle text-muted">
               {{ totalVendorCount }}
-            </h6>
+            </h5>
           </div>
         </div>
       </div>
@@ -23,17 +29,23 @@
         <div class="card col-4 mx-auto text-center" style="width: 15rem">
           <div class="card-body">
             <h5 class="card-title">Assigned Asset</h5>
-            <h6 class="card-subtitle mb-2 text-muted">
+            <p class="card-text">
+              <i class="bi bi-person-workspace"></i>
+            </p>
+            <h5 class="card-subtitle text-muted">
               {{ totalAssetCount - unassignedAssetCount }}
-            </h6>
+            </h5>
           </div>
         </div>
         <div class="card col-4 mx-auto text-center" style="width: 15rem">
           <div class="card-body">
             <h5 class="card-title">Unassigned Assets</h5>
-            <h6 class="card-subtitle mb-2 text-muted">
+            <p class="card-text">
+              <i class="bi bi-person-x-fill"></i>
+            </p>
+            <h5 class="card-subtitle text-muted">
               {{ unassignedAssetCount }}
-            </h6>
+            </h5>
           </div>
         </div>
       </div>
@@ -41,7 +53,10 @@
     <div class="col-6">
       <div class="row my-auto">
         <div class="col-10 mx-auto">
-          <kendo-chart title="Assets By types">
+          <kendo-chart
+            title="Assets By types"
+            (seriesClick)="onPlotAreaClick($event)"
+          >
             <kendo-chart-legend position="bottom"></kendo-chart-legend>
             <kendo-chart-series>
               <kendo-chart-series-item
@@ -60,7 +75,11 @@
   </div>
   <div class="row my-auto">
     <div class="col-10 mx-auto">
-      <kendo-chart title="Vendor And Asset Status" style="height: 250px">
+      <kendo-chart
+        (seriesClick)="onPlotAreaClick($event)"
+        title="Vendor And Asset Status"
+        style="height: 250px"
+      >
         <kendo-chart-series>
           <kendo-chart-series-item
             type="column"

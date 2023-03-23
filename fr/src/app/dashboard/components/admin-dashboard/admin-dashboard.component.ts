@@ -61,4 +61,12 @@ export class AdminDashboardComponent implements OnInit {
       '#'
     )}`;
   }
+
+  public onPlotAreaClick(e: any) {
+    // e.preventDefault(); //to prevent the default contextmenu from opening
+    console.log(e.category);
+    if (e.which === 3) {
+      console.log('Right click');
+    }
+  }
 }
