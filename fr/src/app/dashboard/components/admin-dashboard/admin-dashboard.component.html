@@ -55,7 +55,7 @@
         <div class="col-10 mx-auto">
           <kendo-chart
             title="Assets By types"
-            (seriesClick)="onPlotAreaClick($event)"
+            (seriesClick)="onPieChartClick($event)"
           >
             <kendo-chart-legend position="bottom"></kendo-chart-legend>
             <kendo-chart-series>
@@ -76,7 +76,7 @@
   <div class="row my-auto">
     <div class="col-10 mx-auto">
       <kendo-chart
-        (seriesClick)="onPlotAreaClick($event)"
+        (seriesClick)="onBarChartClick($event)"
         title="Vendor And Asset Status"
         style="height: 250px"
       >
@@ -92,4 +92,6 @@
       </kendo-chart>
     </div>
   </div>
+  <!-- <app-popup ></app-popup> -->
+  <p class="text-center mt-4">Note - Click on any chart to see more details</p>
 </section>

@@ -35,6 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IconModule } from '@progress/kendo-angular-icons';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //get browser information
 const IisIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -73,6 +75,7 @@ const IisIE =
     CoreModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
+    NgbModule,
     HttpClientModule,
     AppRoutingModule,
     GridModule,

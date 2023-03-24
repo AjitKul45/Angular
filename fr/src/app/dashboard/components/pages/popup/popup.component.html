@@ -1,0 +1,38 @@
+<div class="card">
+  <button
+    type="button"
+    class="btn-close ms-1 mt-1"
+    (click)="closePopUp()"
+  ></button>
+  <h4 class="card-title mt-2" style="text-align: center">{{ param }}</h4>
+  <div class="card-body">
+    <kendo-grid [pageable]="true" [pageSize]="5" [data]="list"
+      ><kendo-grid-column field="tyape" title="Type"></kendo-grid-column>
+      <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+      <kendo-grid-column
+        field="proprietary"
+        title="Proprietary"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        field="configuration"
+        title="Configuration"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        field="serviceTag"
+        title="Service Tag"
+      ></kendo-grid-column>
+      <kendo-grid-column field="model" title="Model"></kendo-grid-column>
+      <kendo-grid-column field="expiryDate" title="Expiry Date">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          {{ dataItem.expiryDate | date }}
+        </ng-template></kendo-grid-column
+      >
+      <kendo-grid-column field="ram" title="Ram"></kendo-grid-column>
+      <kendo-grid-column field="vendorId" title="Vendor" *ngIf="!vFlag">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          {{ dataItem.vendorId | vendorsName : vList }}
+        </ng-template>
+      </kendo-grid-column></kendo-grid
+    >
+  </div>
+</div>

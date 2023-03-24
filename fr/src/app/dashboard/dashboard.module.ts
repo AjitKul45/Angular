@@ -19,6 +19,8 @@ import { ChartsModule } from '@progress/kendo-angular-charts';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { NotificationsService } from '../services/notifications.service';
+import { PopupComponent } from './components/pages/popup/popup.component';
+import { SharedService } from '../services/shared.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { NotificationsService } from '../services/notifications.service';
     AddVendorComponent,
     VendorsComponent,
     VendorsNamePipe,
+    PopupComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +45,6 @@ import { NotificationsService } from '../services/notifications.service';
     Ng2SearchPipeModule,
     DashboardRoutingModule,
   ],
-  providers: [NotificationsService],
+  providers: [NotificationsService, SharedService],
 })
 export class DashboardModule {}

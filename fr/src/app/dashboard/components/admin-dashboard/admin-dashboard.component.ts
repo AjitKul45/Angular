@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LegendLabelsContentArgs } from '@progress/kendo-angular-charts';
 import { IntlService } from '@progress/kendo-angular-intl';
 import { count, from } from 'rxjs';
 import { ApplicationService } from 'src/app/services/application.service';
+import { SharedService } from 'src/app/services/shared.service';
+import { AssetsComponent } from '../pages/assets/assets.component';
+import { PopupComponent } from '../pages/popup/popup.component';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -12,11 +16,14 @@ import { ApplicationService } from 'src/app/services/application.service';
 export class AdminDashboardComponent implements OnInit {
   constructor(
     private applicationService: ApplicationService,
-    private intl: IntlService
+    private modalService: NgbModal,
+    private intl: IntlService,
+    private sharedService: SharedService
   ) {
     this.labelContent = this.labelContent.bind(this);
   }
-
+  assetList: any[] = [];
+  vendorList: any[] = [];
   assetsCount: any[] = [];
   assetsByVendorsCount: any[] = [];
 
@@ -35,6 +42,7 @@ export class AdminDashboardComponent implements OnInit {
       this.assetsByVendorsCount = res;
     });
     this.applicationService.getAssets().subscribe((res) => {
+      this.assetList = res;
       from(res)
         .pipe(count())
         .subscribe((r) => {
@@ -43,6 +51,7 @@ export class AdminDashboardComponent implements OnInit {
         });
     });
     this.applicationService.getVendors().subscribe((res) => {
+      this.vendorList = res;
       from(res)
         .pipe(count())
         .subscribe((c) => {
@@ -62,11 +71,27 @@ export class AdminDashboardComponent implements OnInit {
     )}`;
   }
 
-  public onPlotAreaClick(e: any) {
-    // e.preventDefault(); //to prevent the default contextmenu from opening
+  public onPieChartClick(e: any) {
+    console.log(e.dataItem.type);
+    const modalRef = this.modalService.open(PopupComponent, {
+      size: 'xl',
+      backdrop: 'static',
+    });
+    modalRef.componentInstance.param = e.dataItem.type;
+    modalRef.componentInstance.vList = this.vendorList;
+    modalRef.componentInstance.aList = this.assetList;
+    modalRef.componentInstance.aFlag = true;
+  }
+
+  public onBarChartClick(e: any) {
     console.log(e.category);
-    if (e.which === 3) {
-      console.log('Right click');
-    }
+    const modalRef = this.modalService.open(PopupComponent, {
+      size: 'xl',
+      backdrop: 'static',
+    });
+    modalRef.componentInstance.param = e.category;
+    modalRef.componentInstance.aList = this.assetList;
+    modalRef.componentInstance.vList = this.vendorList;
+    modalRef.componentInstance.vFlag = true;
   }
 }

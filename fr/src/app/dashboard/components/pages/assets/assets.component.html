@@ -40,12 +40,20 @@
     >
     <kendo-grid-column field="ram" title="Ram"></kendo-grid-column>
     <kendo-grid-column field="vendorId" title="Vendor"></kendo-grid-column>
-    <kendo-grid-command-column title="command" [width]="157">
+    <kendo-grid-command-column title="command" [width]="230">
       <ng-template kendoGridCellTemplate>
-        <button kendoGridEditCommand class="btn btn-danger">
+        <button
+          kendoGridEditCommand
+          class="btn btn-danger"
+          style="align-items: center"
+        >
           <i class="bi bi-pen"></i>
         </button>
-        <button kendoGridRemoveCommand class="btn btn-warning">
+        <button
+          kendoGridRemoveCommand
+          class="btn btn-warning"
+          style="align-items: center"
+        >
           <i class="bi bi-trash3"></i>
         </button>
       </ng-template>
