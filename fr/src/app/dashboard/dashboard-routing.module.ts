@@ -8,7 +8,7 @@ import { SubmitAssetComponent } from './components/Forms/submit-asset/submit-ass
 import { AssetsComponent } from './components/pages/assets/assets.component';
 import { VendorsComponent } from './components/pages/vendors/vendors.component';
 import { MsalGuard } from '@azure/msal-angular';
-
+import { TransactionsComponent } from './components/pages/transactions/transactions.component';
 const routes: Routes = [
   {
     path: '',
@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'asset-transaction',
     component: AssetTransactionComponent,
+  },
+  {
+    path: 'transactions',
+    component: TransactionsComponent,
   },
   {
     path: 'assign-asset/:id',

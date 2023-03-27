@@ -23,6 +23,7 @@ import { NotificationsService } from '../services/notifications.service';
 import { PopupComponent } from './components/pages/popup/popup.component';
 import { SharedService } from '../services/shared.service';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { TransactionsComponent } from './components/pages/transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
     VendorsComponent,
     VendorsNamePipe,
     PopupComponent,
+    TransactionsComponent,
   ],
   imports: [
     CommonModule,

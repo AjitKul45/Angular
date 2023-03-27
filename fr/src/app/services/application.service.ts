@@ -129,4 +129,14 @@ export class ApplicationService {
   getVendorById(id: any): Observable<any> {
     return this.httpClient.get(`api/Vendor/GetVendor/${id}`);
   }
+
+  getDetailTransactions(): Observable<any> {
+    return this.httpClient.get(`api/AssetTransaction/GetDetailTransactions`);
+  }
+
+  deleteTransaction(id: any): Observable<any> {
+    return this.httpClient.delete(
+      `api/AssetTransaction/DeleteAssetTransaction/${id}`
+    );
+  }
 }

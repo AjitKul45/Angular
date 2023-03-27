@@ -1,0 +1,84 @@
+<section class="TableContainer">
+  <h3 style="text-align: center" class="mb-3">Asset Transactions</h3>
+  <kendo-grid
+    [kendoGridBinding]="transactions"
+    [pageable]="true"
+    [pageSize]="5"
+    [sortable]="true"
+    [groupable]="true"
+    [columnMenu]="menuSettings"
+    filterable="menu"
+  >
+    <kendo-grid-column-group title="Asset Details">
+      <kendo-grid-column
+        field="assetId"
+        title="Asset ID"
+        [width]="100"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        field="assetType"
+        title="Asset Type"
+        [width]="120"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        field="assetName"
+        title="Asset Name"
+        [width]="130"
+      ></kendo-grid-column>
+    </kendo-grid-column-group>
+    <kendo-grid-column-group title="Users Details">
+      <kendo-grid-column
+        field="empId"
+        title="Emp Id"
+        [width]="95"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        field="username"
+        title="Username"
+        [width]="100"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        field="email"
+        title="Email"
+        [width]="100"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        field="location"
+        title="Location"
+        [width]="100"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        field="issuedBy"
+        title="Issued By"
+        [width]="100"
+      ></kendo-grid-column>
+      <kendo-grid-column field="issueDate" title="Issue Date" [width]="100">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          {{ dataItem.issueDate | date }}
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column field="submitDate" title="Submit Date" [width]="100">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          {{ dataItem.submitDate | date }}
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column
+        field="department"
+        title="Department"
+        [width]="100"
+      ></kendo-grid-column>
+    </kendo-grid-column-group>
+    <kendo-grid-command-column title="command" [width]="100">
+      <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem>
+        <button
+          kendoButton
+          themeColor="error"
+          themeColor="error"
+          (click)="submitAsset(dataItem.transactionId)"
+        >
+          <i class="bi bi-person-fill-down"></i>
+        </button>
+      </ng-template>
+    </kendo-grid-command-column>
+  </kendo-grid>
+</section>
