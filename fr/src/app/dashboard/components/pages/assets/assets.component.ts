@@ -7,9 +7,11 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { filter, from } from 'rxjs';
 import { ApplicationService } from 'src/app/services/application.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
+import { AssetTransactionComponent } from '../../Forms/asset-transaction/asset-transaction.component';
 import { IAsset } from '../../Forms/Models/iasset';
 import { IVendor } from '../../Forms/Models/ivendor';
 
@@ -22,8 +24,31 @@ export class AssetsComponent implements OnInit, OnChanges {
   constructor(
     private dashboardService: ApplicationService,
     private notification: NotificationsService,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) {}
+
+  dropdownMenu = [
+    {
+      actionName: 'All Assets',
+      click: (dataItem: any): void => {
+        // console.log(e);
+        this.showAllAssets();
+      },
+    },
+    {
+      actionName: 'Assigned Assets',
+      click: (dataItem: any): void => {
+        this.showAssignedAsset();
+      },
+    },
+    {
+      actionName: 'Unassigned Assets',
+      click: (dataItem: any): void => {
+        this.showUnassignedAsset();
+      },
+    },
+  ];
 
   assets: any[] = [];
   sort: any[] = [];
@@ -32,17 +57,11 @@ export class AssetsComponent implements OnInit, OnChanges {
   searchText!: string;
   @ViewChild('searchString') search!: ElementRef;
   vendors!: IVendor;
+  assignFlag: boolean = false;
+  btnTitle: string = 'All Assets';
 
   ngOnInit(): void {
-    this.dashboardService.getAssets().subscribe((res) => {
-      this.assets = res;
-      for (let i = 0; i < this.assets.length; i++) {
-        if (!this.myset.has(this.assets[i].model)) {
-          this.myset.add(this.assets[i].model);
-        }
-      }
-    });
-
+    this.showAllAssets();
     this.dashboardService.getVendors().subscribe((res) => {
       this.vendors = res;
     });
@@ -79,31 +98,31 @@ export class AssetsComponent implements OnInit, OnChanges {
     }
   }
 
-  sortByModel() {
+  showAllAssets() {
+    this.assignFlag = false;
     this.dashboardService.getAssets().subscribe((res) => {
-      this.sort = [];
       this.assets = res;
-
-      //use filters
-      let x = from(this.assets).pipe(
-        filter(
-          (assetsFlter) =>
-            assetsFlter.model.toLowerCase() === this.selectModel.toLowerCase()
-        )
-      );
-      //subscribe to pipe of filter
-      x.subscribe((result) => {
-        this.sort.push(result);
-      });
-      this.assets = this.sort;
-      if (this.selectModel.toLowerCase() === 'all' || this.selectModel === '') {
-        this.assets = res;
-      }
     });
   }
 
-  searchBox() {
-    this.selectModel = this.search.nativeElement.value;
-    this.sortByModel();
+  showUnassignedAsset(): void {
+    this.assignFlag = true;
+    this.dashboardService.getUnAssignedAssetList().subscribe((res) => {
+      this.assets = res;
+    });
+  }
+
+  showAssignedAsset(): void {
+    this.assignFlag = false;
+
+    this.dashboardService.getAssingedAssetList().subscribe((res) => {
+      this.assets = res;
+    });
+  }
+
+  openAssignForm(e: any): void {
+    console.log(e);
+    this.router.navigate(['/dashboard/assign-asset', e]);
+    // this.modalService.open(AssetTransactionComponent);
   }
 }

@@ -35,7 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IconModule } from '@progress/kendo-angular-icons';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
-
+import { MenusModule } from '@progress/kendo-angular-menu';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //get browser information
 const IisIE =
@@ -79,6 +79,7 @@ const IisIE =
     HttpClientModule,
     AppRoutingModule,
     GridModule,
+    MenusModule,
     NotificationModule,
     ChartsModule,
     IconModule,

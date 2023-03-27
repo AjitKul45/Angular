@@ -14,6 +14,9 @@ const headers = { headers: { 'Content-Type': 'application/json' } };
   providedIn: 'root',
 })
 export class ApplicationService {
+  getAssignedAssetList() {
+    throw new Error('Method not implemented.');
+  }
   constructor(
     private httpClient: HttpClient,
     private notificationService: NotificationService
@@ -117,6 +120,10 @@ export class ApplicationService {
 
   getUnAssignedAssetList(): Observable<any> {
     return this.httpClient.get('api/AssetDetails/GetListOfUnassignedAsset');
+  }
+
+  getAssingedAssetList(): Observable<any> {
+    return this.httpClient.get('api/AssetDetails/GetListOfAssignedAsset');
   }
 
   getVendorById(id: any): Observable<any> {

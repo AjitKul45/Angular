@@ -16,11 +16,13 @@ import { VendorsComponent } from './components/pages/vendors/vendors.component';
 import { AddVendorComponent } from './components/Forms/add-vendor/add-vendor.component';
 import { VendorsNamePipe } from '../shared/custom-pipe/vendors-name.pipe';
 import { ChartsModule } from '@progress/kendo-angular-charts';
+import { MenusModule } from '@progress/kendo-angular-menu';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { NotificationsService } from '../services/notifications.service';
 import { PopupComponent } from './components/pages/popup/popup.component';
 import { SharedService } from '../services/shared.service';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { SharedService } from '../services/shared.service';
     FormsModule,
     ReactiveFormsModule,
     GridModule,
+    ButtonsModule,
+    MenusModule,
     NotificationModule,
     HttpClientModule,
     ChartsModule,

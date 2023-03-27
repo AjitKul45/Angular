@@ -19,6 +19,10 @@ const routes: Routes = [
     component: AssetTransactionComponent,
   },
   {
+    path: 'assign-asset/:id',
+    component: AssetTransactionComponent,
+  },
+  {
     path: 'add-asset',
     component: AddAssetComponent,
   },

@@ -15,7 +15,7 @@
           required
         >
           <option value="0" selected>Select Asset</option>
-          <option value="" *ngFor="let item of assets" [value]="item.id">
+          <option *ngFor="let item of assets" [value]="item.id">
             {{ item.tyape }}&emsp;{{ item.name }}&emsp;{{ item.ram }}
           </option>
         </select>

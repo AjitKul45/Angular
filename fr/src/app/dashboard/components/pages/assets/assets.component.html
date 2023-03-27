@@ -11,12 +11,19 @@
   >
     <ng-template kendoGridToolbarTemplate>
       <button
+        kendoButton
         [routerLink]="['/dashboard/add-asset']"
         routerLinkActive="router-link-active"
-        class="btn btn-success"
+        themeColor="success"
       >
         Add New Asset
       </button>
+      <kendo-dropdownbutton
+        [data]="dropdownMenu"
+        textField="actionName"
+        themeColor="error"
+        >Show
+      </kendo-dropdownbutton>
     </ng-template>
     <kendo-grid-column field="tyape" title="Type"></kendo-grid-column>
     <kendo-grid-column field="name" title="Name"></kendo-grid-column>
@@ -39,21 +46,29 @@
       </ng-template></kendo-grid-column
     >
     <kendo-grid-column field="ram" title="Ram"></kendo-grid-column>
-    <kendo-grid-column field="vendorId" title="Vendor"></kendo-grid-column>
-    <kendo-grid-command-column title="command" [width]="230">
-      <ng-template kendoGridCellTemplate>
+    <kendo-grid-column field="vendorId" title="Vendor"
+      ><ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.vendorId | vendorsName : vendors }}
+      </ng-template></kendo-grid-column
+    >
+    <kendo-grid-command-column title="command" [width]="140">
+      <ng-template
+        kendoGridCellTemplate
+        let-dataItem
+        style="text-align: center"
+      >
         <button
-          kendoGridEditCommand
-          class="btn btn-danger"
-          style="align-items: center"
+          kendoButton
+          themeColor="info"
+          (click)="openAssignForm(dataItem.id)"
+          *ngIf="assignFlag"
         >
+          <i class="bi bi-person-fill-up"></i>
+        </button>
+        <button kendoGridEditCommand themeColor="warning">
           <i class="bi bi-pen"></i>
         </button>
-        <button
-          kendoGridRemoveCommand
-          class="btn btn-warning"
-          style="align-items: center"
-        >
+        <button kendoGridRemoveCommand themeColor="error">
           <i class="bi bi-trash3"></i>
         </button>
       </ng-template>

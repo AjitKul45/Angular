@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationService } from 'src/app/services/application.service';
 import { IAssetTransaction } from '../Models/iasset-transaction';
 import { formatDate } from '@angular/common';
+import { filter, find, first, from } from 'rxjs';
+import { IAsset } from '../Models/iasset';
 
 @Component({
   selector: 'app-asset-transaction',
@@ -23,20 +25,41 @@ export class AssetTransactionComponent implements OnInit {
     issuedBy: '',
     department: '',
   };
+  aId: number = 0;
   issuers: any = {};
-  assets: any = [];
+  assets: IAsset[] = [];
   constructor(
     private httpClient: HttpClient,
     private dashboardService: ApplicationService,
+    private activateRoute: ActivatedRoute,
     private router: Router
   ) {}
+
   ngOnInit(): void {
-    this.dashboardService.getUserList().subscribe(
-      (res) => {
-        this.issuers = res;
-      },
-      (err) => {}
-    );
+    this.aId = Number(this.activateRoute.snapshot.paramMap.get('id'));
+
+    if (this.aId !== 0) {
+      // from(this.assets)
+      //   .pipe(
+      //     filter((a: IAsset) => {
+      //       console.log('in filter');
+      //       return a.id == this.aId;
+      //     })
+      //   )
+      //   .subscribe(
+      //     (r) => {
+      //       console.log(r);
+      //     },
+      //     (e) => {
+      //       console.log(e);
+      //     }
+      //   );
+
+      this.transaction.assetId = Number(
+        this.activateRoute.snapshot.paramMap.get('id')
+      );
+    }
+
     this.dashboardService.getUnAssignedAssetList().subscribe(
       (res) => {
         this.assets = res;
