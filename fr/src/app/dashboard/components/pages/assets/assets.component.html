@@ -1,4 +1,5 @@
 <section class="TableContainer">
+  <h3 style="text-align: center" class="mb-3">{{ title }}</h3>
   <kendo-grid
     [kendoGridBinding]="assets"
     [pageable]="true"
@@ -7,6 +8,7 @@
     [sortable]="true"
     (edit)="editAsset($event)"
     (remove)="deleteAsset($event)"
+    [columnMenu]="menuSettings"
     filterable="menu"
   >
     <ng-template kendoGridToolbarTemplate>
@@ -22,31 +24,51 @@
         [data]="dropdownMenu"
         textField="actionName"
         themeColor="error"
-        >Show
+        >Show <i class="bi bi-chevron-down"></i>
       </kendo-dropdownbutton>
     </ng-template>
-    <kendo-grid-column field="tyape" title="Type"></kendo-grid-column>
-    <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+    <kendo-grid-column
+      field="tyape"
+      title="Type"
+      [width]="100"
+    ></kendo-grid-column>
+    <kendo-grid-column
+      field="name"
+      title="Name"
+      [width]="100"
+    ></kendo-grid-column>
     <kendo-grid-column
       field="proprietary"
       title="Proprietary"
+      [width]="100"
     ></kendo-grid-column>
     <kendo-grid-column
       field="configuration"
       title="Configuration"
+      [width]="100"
     ></kendo-grid-column>
     <kendo-grid-column
       field="serviceTag"
       title="Service Tag"
+      [width]="100"
     ></kendo-grid-column>
-    <kendo-grid-column field="model" title="Model"></kendo-grid-column>
-    <kendo-grid-column field="expiryDate" title="Expiry Date">
+    <kendo-grid-column
+      field="model"
+      title="Model"
+      [width]="100"
+    ></kendo-grid-column>
+    <kendo-grid-column field="expiryDate" title="Expiry Date" [width]="100">
       <ng-template kendoGridCellTemplate let-dataItem>
         {{ dataItem.expiryDate | date }}
       </ng-template></kendo-grid-column
     >
-    <kendo-grid-column field="ram" title="Ram"></kendo-grid-column>
-    <kendo-grid-column field="vendorId" title="Vendor"
+    <kendo-grid-column field="ram" title="Ram" [width]="80"></kendo-grid-column>
+    <kendo-grid-column
+      title="Remarks"
+      field="remarks"
+      [width]="120"
+    ></kendo-grid-column>
+    <kendo-grid-column field="vendorId" title="Vendor" [width]="100"
       ><ng-template kendoGridCellTemplate let-dataItem>
         {{ dataItem.vendorId | vendorsName : vendors }}
       </ng-template></kendo-grid-column
@@ -73,5 +95,8 @@
         </button>
       </ng-template>
     </kendo-grid-command-column>
+    <ng-template kendoGridNoRecordsTemplate>
+      <p>There is no data to display.</p>
+    </ng-template>
   </kendo-grid>
 </section>

@@ -1,8 +1,9 @@
 <section class="TableContainer">
+  <h3 style="text-align: center" class="mb-3">Vendors</h3>
   <kendo-grid
     [kendoGridBinding]="vendors"
     [pageable]="true"
-    [pageSize]="10"
+    [pageSize]="5"
     (remove)="deleteVender($event)"
     (edit)="editVendor($event)"
   >

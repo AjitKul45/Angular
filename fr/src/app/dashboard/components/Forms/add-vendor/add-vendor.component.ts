@@ -66,6 +66,7 @@ export class AddVendorComponent implements OnInit {
       this.applicationService.addVendor(this.vendorForm.value).subscribe(
         (res) => {
           console.log(res);
+          this.router.navigate(['/dashboard/vendors']);
           this.notification.showSucces('Vendor Added Successfully');
         },
         (err) => {
