@@ -67,11 +67,11 @@ export class AssetsComponent implements OnInit, OnChanges {
   title: string = 'All Assets';
 
   public menuSettings: ColumnMenuSettings = {
-    lock: true,
-    stick: true,
-    setColumnPosition: { expanded: true },
-    autoSizeColumn: true,
-    autoSizeAllColumns: true,
+    // lock: true,
+    // stick: true,
+    // setColumnPosition: { expanded: true },
+    // autoSizeColumn: true,
+    // autoSizeAllColumns: true,
   };
   ngOnInit(): void {
     this.showAllAssets();

@@ -14,3 +14,9 @@
 .centre-text {
   text-align: center;
 }
+.star {
+  color: red;
+}
+.errorMessage {
+  color: red;
+}

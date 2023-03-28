@@ -1,5 +1,5 @@
 <section class="container">
-  <div class="card" style="padding: 5%; border-radius: 2%">
+  <div class="card shadow" style="padding: 5%; border-radius: 2%">
     <h2 *ngIf="!updateflag" class="text-center">Add Asset</h2>
     <h2 *ngIf="updateflag" class="text-center">Edit Asset</h2>
     <form class="form" #assetForm="ngForm" (ngSubmit)="submitAsset()">
@@ -32,12 +32,18 @@
             name="Name"
             #name="ngModel"
             class="form-control"
+            pattern="^[a-zA-Z0-9\s]+$"
             required
             [(ngModel)]="asset.name"
           />
           <span *ngIf="name.invalid && name.touched" class="errorMessage"
-            >Enter Valid Name</span
-          >
+            ><span *ngIf="name.errors?.['required']" class="errorMessage"
+              >Enter Valid Name</span
+            >
+            <span *ngIf="name.errors?.['pattern']" class="errorMessage"
+              >Only digits,letters and blank space are allowed</span
+            >
+          </span>
         </div>
         <div class="form-group col-4">
           <label for="Proprietary">Proprietary<sup class="star">*</sup></label>
@@ -172,10 +178,14 @@
             #owner="ngModel"
             class="form-control"
             required
+            pattern="^[a-zA-Z\s]+$"
             [(ngModel)]="asset.owner"
           />
           <span *ngIf="owner.invalid && owner.touched" class="errorMessage"
-            >Enter Owner</span
+            ><span *ngIf="owner.errors?.['required']">Enter Owner</span>
+            <span *ngIf="owner.errors?.['pattern']"
+              >Only letters are allowed</span
+            ></span
           >
         </div>
         <div class="form-group col-4">
@@ -187,10 +197,14 @@
             #remark="ngModel"
             class="form-control"
             required
+            pattern="^[a-zA-Z\s]+$"
             [(ngModel)]="asset.remarks"
           />
           <span *ngIf="remark.invalid && remark.touched" class="errorMessage"
-            >Select Remark</span
+            ><span *ngIf="remark.errors?.['required']">Remark required</span
+            ><span *ngIf="remark.errors?.['pattern']"
+              >Only letters and blank space are allowed</span
+            ></span
           >
         </div>
         <div class="form-group col-4">

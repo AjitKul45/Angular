@@ -6,29 +6,61 @@
   ></button>
   <h4 class="card-title mt-2" style="text-align: center">{{ param }}</h4>
   <div class="card-body">
-    <kendo-grid [pageable]="true" [pageSize]="5" [data]="list"
-      ><kendo-grid-column field="tyape" title="Type"></kendo-grid-column>
-      <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+    <kendo-grid
+      [pageable]="true"
+      [pageSize]="5"
+      [kendoGridBinding]="list"
+      class="shadow"
+      ><kendo-grid-column
+        field="tyape"
+        title="Type"
+        [headerStyle]="{ 'background-color': '#666', color: '#fff' }"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        field="name"
+        title="Name"
+        [headerStyle]="{ 'background-color': '#666', color: '#fff' }"
+      ></kendo-grid-column>
       <kendo-grid-column
         field="proprietary"
         title="Proprietary"
+        [headerStyle]="{ 'background-color': '#666', color: '#fff' }"
       ></kendo-grid-column>
       <kendo-grid-column
         field="configuration"
         title="Configuration"
+        [headerStyle]="{ 'background-color': '#666', color: '#fff' }"
       ></kendo-grid-column>
       <kendo-grid-column
         field="serviceTag"
         title="Service Tag"
+        [headerStyle]="{ 'background-color': '#666', color: '#fff' }"
       ></kendo-grid-column>
-      <kendo-grid-column field="model" title="Model"></kendo-grid-column>
-      <kendo-grid-column field="expiryDate" title="Expiry Date">
+      <kendo-grid-column
+        field="model"
+        title="Model"
+        [headerStyle]="{ 'background-color': '#666', color: '#fff' }"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        field="expiryDate"
+        title="Expiry Date"
+        [headerStyle]="{ 'background-color': '#666', color: '#fff' }"
+      >
         <ng-template kendoGridCellTemplate let-dataItem>
           {{ dataItem.expiryDate | date }}
         </ng-template></kendo-grid-column
       >
-      <kendo-grid-column field="ram" title="Ram"></kendo-grid-column>
-      <kendo-grid-column field="vendorId" title="Vendor" *ngIf="!vFlag">
+      <kendo-grid-column
+        field="ram"
+        title="Ram"
+        [headerStyle]="{ 'background-color': '#666', color: '#fff' }"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        field="vendorId"
+        title="Vendor"
+        *ngIf="!vFlag"
+        [headerStyle]="{ 'background-color': '#666', color: '#fff' }"
+      >
         <ng-template kendoGridCellTemplate let-dataItem>
           {{ dataItem.vendorId | vendorsName : vList }}
         </ng-template>

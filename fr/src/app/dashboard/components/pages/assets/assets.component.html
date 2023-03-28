@@ -10,6 +10,8 @@
     (remove)="deleteAsset($event)"
     [columnMenu]="menuSettings"
     filterable="menu"
+    [navigable]="true"
+    class="shadow"
   >
     <ng-template kendoGridToolbarTemplate>
       <button
@@ -57,7 +59,12 @@
       title="Model"
       [width]="100"
     ></kendo-grid-column>
-    <kendo-grid-column field="expiryDate" title="Expiry Date" [width]="100">
+    <kendo-grid-column
+      field="expiryDate"
+      title="Expiry Date"
+      [width]="100"
+      filter="date"
+    >
       <ng-template kendoGridCellTemplate let-dataItem>
         {{ dataItem.expiryDate | date }}
       </ng-template></kendo-grid-column

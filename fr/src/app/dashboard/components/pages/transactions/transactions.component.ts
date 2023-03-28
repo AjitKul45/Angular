@@ -31,14 +31,16 @@ export class TransactionsComponent implements OnInit {
 
   submitAsset(id: any): void {
     console.log(id);
-    this.appService.deleteTransaction(id).subscribe(
-      (data) => {
-        this.transactions = data;
-        this.notificationService.showSucces('Asset Submitted');
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    if (confirm('Are you sure you want to submit this asset?')) {
+      this.appService.deleteTransaction(id).subscribe(
+        (data) => {
+          this.transactions = data;
+          this.notificationService.showSucces('Asset Submitted');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
   }
 }
