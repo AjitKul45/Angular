@@ -55,12 +55,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       )
       .subscribe((x) => {
         this.flag = this.authService.instance.getAllAccounts().length > 0;
-        // this.refreshService.refreshSubject.next(this.flag);
         localStorage.setItem('flag', this.flag);
-        // localStorage.setItem(
-        //   'token',
-        //   this.authService.instance.getActiveAccount()?.name
-        // );
+
         console.log('In MSAL Pipe : ' + this.flag);
       });
   }

@@ -10,7 +10,7 @@
     filterable="menu"
     class="shadow"
   >
-    <kendo-grid-column-group title="Asset Details">
+    <kendo-grid-column-group title="Asset Details" [columnMenu]="false">
       <kendo-grid-column
         field="assetId"
         title="Asset ID"
@@ -27,7 +27,7 @@
         [width]="130"
       ></kendo-grid-column>
     </kendo-grid-column-group>
-    <kendo-grid-column-group title="Users Details">
+    <kendo-grid-column-group title="Users Details" [columnMenu]="false">
       <kendo-grid-column
         field="empId"
         title="Emp Id"

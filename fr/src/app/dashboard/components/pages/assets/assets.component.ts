@@ -70,8 +70,8 @@ export class AssetsComponent implements OnInit, OnChanges {
     // lock: true,
     // stick: true,
     // setColumnPosition: { expanded: true },
-    // autoSizeColumn: true,
-    // autoSizeAllColumns: true,
+    autoSizeColumn: true,
+    autoSizeAllColumns: true,
   };
   ngOnInit(): void {
     this.showAllAssets();

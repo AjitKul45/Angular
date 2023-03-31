@@ -48,14 +48,11 @@ export class AddVendorComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.updateflag = true;
-      console.log(id);
       this.applicationService.getVendorById(id).subscribe(
         (res) => {
-          console.log(res);
           this.vendorForm.setValue(res);
         },
         (err) => {
-          console.log(err);
           this.notification.showError(err.message.message);
         }
       );
@@ -65,7 +62,6 @@ export class AddVendorComponent implements OnInit {
     if (this.vendorForm?.valid) {
       this.applicationService.addVendor(this.vendorForm.value).subscribe(
         (res) => {
-          console.log(res);
           this.router.navigate(['/dashboard/vendors']);
           this.notification.showSucces('Vendor Added Successfully');
         },

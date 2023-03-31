@@ -117,9 +117,12 @@
             formControlName="terminationDate"
             [value]="
               this.vendorForm.controls['terminationDate'].value
-                | date : 'dd/MM/yyyy'
+                | date : 'yyyy-MM-dd'
             "
-            min="{{ vendorForm.controls['registrationDate'].value }}"
+            min="{{
+              vendorForm.controls['registrationDate'].value
+                | date : 'yyyy-MM-dd'
+            }}"
           />
           <span
             class="errorMessage"

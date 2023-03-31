@@ -12,6 +12,7 @@
     filterable="menu"
     [navigable]="true"
     class="shadow"
+    [resizable]="true"
   >
     <ng-template kendoGridToolbarTemplate>
       <button
@@ -80,7 +81,7 @@
         {{ dataItem.vendorId | vendorsName : vendors }}
       </ng-template></kendo-grid-column
     >
-    <kendo-grid-command-column title="command" [width]="140">
+    <kendo-grid-command-column title="command" [width]="115">
       <ng-template
         kendoGridCellTemplate
         let-dataItem
