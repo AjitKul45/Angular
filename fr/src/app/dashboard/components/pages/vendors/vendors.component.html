@@ -4,7 +4,7 @@
     [kendoGridBinding]="vendors"
     [pageable]="true"
     [pageSize]="5"
-    (remove)="deleteVender($event)"
+    (remove)="deleteVender($event.dataItem)"
     (edit)="editVendor($event)"
     class="shadow"
   >

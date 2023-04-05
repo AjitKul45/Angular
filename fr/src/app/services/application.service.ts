@@ -14,13 +14,10 @@ const headers = { headers: { 'Content-Type': 'application/json' } };
   providedIn: 'root',
 })
 export class ApplicationService {
-  getAssignedAssetList() {
-    throw new Error('Method not implemented.');
-  }
-  constructor(
-    private httpClient: HttpClient,
-    private notificationService: NotificationService
-  ) {}
+  // getAssignedAssetList() {
+  //   throw new Error('Method not implemented.');
+  // }
+  constructor(private httpClient: HttpClient) {}
 
   public subject = new Subject<any>();
 
@@ -64,7 +61,7 @@ export class ApplicationService {
     return this.httpClient.get(`api/AssetTransaction/get_by_email/${email}`);
   }
 
-  addVendor(vendor: any): Observable<any> {
+  addVendor(vendor: IVendor): Observable<any> {
     return this.httpClient.post(`api/Vendor/AddVendor`, vendor, headers);
   }
 

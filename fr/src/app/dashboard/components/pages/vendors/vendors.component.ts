@@ -10,16 +10,20 @@ import { NotificationsService } from 'src/app/services/notifications.service';
   styleUrls: ['./vendors.component.css'],
 })
 export class VendorsComponent implements OnInit {
-  vendors: any[] = [];
+  vendors: IVendor[] = [];
   searchText!: string;
 
   constructor(
     private dashboardService: ApplicationService,
-    private notification: NotificationsService,
+    // private notification: NotificationsService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.getAllVendors();
+  }
+
+  getAllVendors() {
     this.dashboardService.getVendors().subscribe((res) => {
       this.vendors = res;
     });
@@ -28,15 +32,17 @@ export class VendorsComponent implements OnInit {
   editVendor(e: any) {
     this.router.navigate(['dashboard/edit-vendor', e.dataItem.id]);
   }
-  deleteVender(e: any) {
-    this.dashboardService.deleteVender(e.dataItem.id).subscribe(
+  deleteVender(e: IVendor) {
+    console.log(e);
+    this.vendors = this.vendors.filter((v) => v.id !== e.id);
+    this.dashboardService.deleteVender(e.id).subscribe(
       (res) => {
         this.vendors = res;
-        this.notification.showSucces('Deleted Successfully');
+        // this.notification.showSucces('Deleted Successfully');
       },
       (err) => {
         console.log(err);
-        this.notification.showError('Deletion Failed');
+        // this.notification.showError('Deletion Failed');
       }
     );
   }
