@@ -1,1 +1,3 @@
-<p>post works!</p>
+<div *ngFor="let item of posts">
+  <app-pst [post]="item" (delete)="delete($event)"></app-pst>
+</div>

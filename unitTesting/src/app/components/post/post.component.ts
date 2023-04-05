@@ -22,8 +22,9 @@ export class PostComponent implements OnInit {
     });
   }
 
-  deletePost(post: Post) {
-    let posts = this.posts.filter((post) => post.id !== post.id);
-    this.postService.deletePost(post).subscribe((data: any) => {});
+  delete(post: Post) {
+    this.posts = this.posts.filter((p) => p.id !== post.id);
+    console.log(post);
+    this.postService.deletePost(post).subscribe();
   }
 }
